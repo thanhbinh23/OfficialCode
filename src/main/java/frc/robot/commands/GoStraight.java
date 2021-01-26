@@ -26,6 +26,7 @@ public class GoStraight extends CommandBase {
   public static AHRS ahrs = new AHRS();
   PIDController turnController;
   public double time;
+  public double error;
  
   public GoStraight(Drivebase drivebase, double x) {
      m_drivebase = drivebase;
@@ -49,13 +50,8 @@ public class GoStraight extends CommandBase {
 
   @Override
   public void execute() {
-
-    if (ahrs.getYaw() > 2 || ahrs.getYaw() < -2) {
-      m_drivebase.drive(0,0);
-      new RotateToAngle(m_drivebase, 0);
-    }
-      else if(ahrs.getYaw() > 1 || ahrs.getYaw()<-1) {m_drivebase.drive(-0.2,-0.2);}
-      else {m_drivebase.drive(-0.4, -0.4);}
+    double error = turnController.calculate(ahrs.getYaw());
+    m_drivebase.drive(0.4, 0.4 + error);
     
   }
 
