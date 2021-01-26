@@ -25,17 +25,17 @@ public class GoStraight extends CommandBase {
   private final Drivebase m_drivebase;
   public static AHRS ahrs = new AHRS();
   PIDController turnController;
-  public double time;
+
   public double error;
  
-  public GoStraight(Drivebase drivebase, double x) {
+  public GoStraight(Drivebase drivebase) {
      m_drivebase = drivebase;
      turnController = new PIDController(kP, kI, kD);
      turnController.enableContinuousInput(-180, 180);
      turnController.setIntegratorRange(-10, 1);
      turnController.setTolerance(kToleranceDegrees, kToleranceAngularVelocity);
      addRequirements(m_drivebase);
-     double time = x;
+  
   }
 
   
@@ -43,15 +43,15 @@ public class GoStraight extends CommandBase {
   public void initialize() {
     turnController.reset();  
     ahrs.reset();
-    //Timer.delay(time);
-    //new RotateToAngle(m_drivebase,0);
+
   }
 
 
   @Override
   public void execute() {
     double error = turnController.calculate(ahrs.getYaw());
-    m_drivebase.drive(0.4, 0.4 + error);
+    error = Math.min(0.1, Math.max(-0.1, error));
+    m_drivebase.drive(-0.4, -0.4 - error);
     
   }
 

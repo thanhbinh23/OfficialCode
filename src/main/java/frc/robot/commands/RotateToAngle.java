@@ -38,7 +38,7 @@ public RotateToAngle(Drivebase drivebase, double angle) {
   public void execute() {
     double speed = turnController.calculate(ahrs.getYaw());
     speed += Math.signum(speed) * 0.1;
-    speed = Math.min(0.8, Math.max(-0.8, speed));
+    speed = Math.min(0.6, Math.max(-0.6, speed));
     m_drivebase.drive(-speed, speed);
   }
 
