@@ -13,11 +13,10 @@ import frc.robot.subsystems.Drivebase;
 public class Autonomous extends SequentialCommandGroup {
   /** Creates a new Autonomous. */
   public Autonomous(Drivebase drive) {
-    // Add your commands in the addCommands() call, e.g.
-    // addCommands(new FooCommand(), new BarCommand());
+    super(
     
-    new RotateToAngle(drive, 90).withTimeout(5);
+    new RotateToAngle(drive, 90).withTimeout(5)
 
-    
+    );
   }
 }
