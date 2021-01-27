@@ -20,7 +20,7 @@ public class RotateToAngle extends CommandBase {
 public RotateToAngle(Drivebase drivebase, double angle) {
   m_drivebase = drivebase;
   turnController = new PIDController(kP, kI, kD);
-  turnController.setSetpoint( angle);
+  turnController.setSetpoint(angle);
   turnController.enableContinuousInput(-180, 180);
   turnController.setIntegratorRange(-10, 1);
   turnController.setTolerance(kToleranceDegrees, kToleranceAngularVelocity);

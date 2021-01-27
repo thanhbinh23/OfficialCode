@@ -15,9 +15,9 @@ public class Autonomous extends SequentialCommandGroup {
   public Autonomous(Drivebase drive) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    super(new RotateToAngle(drive, 90)
-    // new GoStraight(drive).withTimeout(5)
+    
+    new RotateToAngle(drive, 90).withTimeout(5);
 
-    );
+    
   }
 }
