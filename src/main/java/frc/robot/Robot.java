@@ -10,6 +10,7 @@ package frc.robot;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -46,7 +47,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    SmartDashboard.putNumber("x", ahrs.getYaw());
+    
     SmartDashboard.putNumber("foo", SmartDashboard.getNumber("foo", 0) + 1);
     // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
     // commands, running already-scheduled commands, removing finished or interrupted commands,
@@ -60,10 +61,12 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
+    //
   }
 
   @Override
   public void disabledPeriodic() {
+    //
   }
 
   /**
@@ -84,6 +87,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
+    
+    //
   }
 
   @Override
@@ -120,5 +125,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+    //
   }
 }
