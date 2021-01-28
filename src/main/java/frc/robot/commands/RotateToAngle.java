@@ -25,25 +25,26 @@ public class RotateToAngle extends CommandBase {
   public static AHRS ahrs = new AHRS();
   PIDController turnController;
 
-public RotateToAngle(Drivebase drivebase, double angle) {
-  m_drivebase = drivebase;
-  turnController = new PIDController(kP, kI, kD);
-  turnController.setSetpoint( angle);
-  turnController.enableContinuousInput(-180, 180);
-  turnController.setIntegratorRange(-10, 1);
-  turnController.setTolerance(kToleranceDegrees, kToleranceAngularVelocity);
-  addRequirements(m_drivebase);
-}
-  
+  public RotateToAngle(Drivebase drivebase, double angle) {
+    m_drivebase = drivebase;
+    turnController = new PIDController(kP, kI, kD);
+    turnController.setSetpoint(angle);
+    turnController.enableContinuousInput(-180, 180);
+    turnController.setIntegratorRange(-10, 1);
+    turnController.setTolerance(kToleranceDegrees, kToleranceAngularVelocity);
+    addRequirements(m_drivebase);
+  }
+
   @Override
-  public void initialize() {  
-    turnController.reset();  
+  public void initialize() {
+    turnController.reset();
     ahrs.reset();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    SmartDashboard.putBoolean("start", true);
     SmartDashboard.putNumber("angle", ahrs.getYaw());
     double speed = turnController.calculate(ahrs.getYaw());
     speed += Math.signum(speed) * 0.1;
@@ -55,6 +56,7 @@ public RotateToAngle(Drivebase drivebase, double angle) {
   @Override
   public void end(boolean interrupted) {
     m_drivebase.drive(0, 0);
+    SmartDashboard.putBoolean("start", false);
   }
 
   // Returns true when the command should end.
