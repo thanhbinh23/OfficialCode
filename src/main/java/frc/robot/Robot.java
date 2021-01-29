@@ -7,7 +7,6 @@
 
 package frc.robot;
 
-import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.controller.PIDController;
@@ -22,7 +21,6 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static AHRS ahrs = new AHRS();
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
