@@ -4,10 +4,8 @@
 
 package frc.robot.subsystems;
 
-import static frc.robot.Constants.DRIVE_CONST.LEFT_FOLLOW_CAN;
-import static frc.robot.Constants.DRIVE_CONST.LEFT_MASTER_CAN;
-import static frc.robot.Constants.DRIVE_CONST.RIGHT_FOLLOW_CAN;
-import static frc.robot.Constants.DRIVE_CONST.RIGHT_MASTER_CAN;
+import static frc.robot.Constants.DRIVE_CONST.*;
+
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 

@@ -7,11 +7,7 @@
 
 package frc.robot.commands;
 
-import static frc.robot.Constants.PID_CONST.kD;
-import static frc.robot.Constants.PID_CONST.kI;
-import static frc.robot.Constants.PID_CONST.kP;
-import static frc.robot.Constants.PID_CONST.kToleranceAngularVelocity;
-import static frc.robot.Constants.PID_CONST.kToleranceDegrees;
+import static frc.robot.Constants.PID_CONST.*;
 
 import com.kauailabs.navx.frc.AHRS;
 
