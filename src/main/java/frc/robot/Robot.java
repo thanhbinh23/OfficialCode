@@ -105,11 +105,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    if (RobotContainer.stick.getRawButton(6)) {
-      m_robotContainer.drivebase.drive(RobotContainer.stick.getRawAxis(1) * 0.6, RobotContainer.stick.getRawAxis(3) * 0.6 );
-      }
-      else m_robotContainer.drivebase.drive(RobotContainer.stick.getRawAxis(1) * 0.4, RobotContainer.stick.getRawAxis(3) * 0.4 );
-
+ // empty
   }
 
   @Override
