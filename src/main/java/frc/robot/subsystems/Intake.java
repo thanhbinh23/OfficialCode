@@ -12,13 +12,18 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 
 public class Intake extends SubsystemBase {
-  public WPI_TalonSRX Intake = new WPI_TalonSRX(INTAKE_CAN);
+  public WPI_TalonSRX Intake = new WPI_TalonSRX(3);
+
   public Intake() {
     //
   }
 
   @Override
   public void periodic() {
-    if (RobotContainer.stick.getRawButton(2)) {Intake.set(0.25);}
+    if (RobotContainer.stick.getRawButton(2)) {
+      Intake.set(0.9);
+    } else {
+      Intake.set(0);
+    }
   }
 }
