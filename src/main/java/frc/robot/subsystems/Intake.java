@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 
 public class Intake extends SubsystemBase {
-  public WPI_TalonSRX Intake = new WPI_TalonSRX(3);
+  public WPI_TalonSRX Intake = new WPI_TalonSRX(INTAKE_CAN);
 
   public Intake() {
     //
