@@ -23,11 +23,13 @@ public class RotateToAngle extends CommandBase {
 
   public RotateToAngle(Drivebase drivebase, double angle) {
     m_drivebase = drivebase;
+
     turnController = new PIDController(kP, kI, kD);
     turnController.setSetpoint(angle);
     turnController.enableContinuousInput(-180, 180);
     turnController.setIntegratorRange(-10, 1);
     turnController.setTolerance(kToleranceDegrees, kToleranceAngularVelocity);
+
     addRequirements(m_drivebase);
   }
 
@@ -42,10 +44,10 @@ public class RotateToAngle extends CommandBase {
   public void execute() {
     SmartDashboard.putBoolean("start", true);
     SmartDashboard.putNumber("angle", ahrs.getYaw());
-    double speed = turnController.calculate(ahrs.getYaw());
-    speed += Math.signum(speed) * 0.1;
-    speed = Math.min(0.6, Math.max(-0.6, speed));
-    m_drivebase.drive(-speed, speed);
+    double speed = turnController.calculate(ahrs.getYaw()); // get speed
+    speed += Math.signum(speed) * 0.1; // lower bound
+    speed = Math.min(0.6, Math.max(-0.6, speed)); // upper bound
+    m_drivebase.drive(-speed, speed); // actual driving mechanism
   }
 
   // Called once the command ends or is interrupted.
