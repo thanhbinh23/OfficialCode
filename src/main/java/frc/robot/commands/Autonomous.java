@@ -15,6 +15,6 @@ public class Autonomous extends SequentialCommandGroup {
   public Autonomous(Drivebase drive) {
     super(
 
-        new RotateToAngle(drive, 90).withTimeout(5));
+        new RotateToAngle(drive, 90).withTimeout(2));
   }
 }

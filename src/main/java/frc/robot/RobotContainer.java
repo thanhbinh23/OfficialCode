@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.Autonomous;
 import frc.robot.subsystems.Drivebase;
+import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /**
@@ -26,7 +27,7 @@ public class RobotContainer {
   public final Drivebase drivebase = new Drivebase();
   private final Autonomous m_autoCommand = new Autonomous(drivebase);
   public static Joystick stick = new Joystick(0);
-
+  public final Shooter shooter = new Shooter();
 
 
 

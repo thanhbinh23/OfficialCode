@@ -6,24 +6,25 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import static frc.robot.Constants.DRIVE_CONST.*;
+
 import static frc.robot.Constants.STICK_CONST.*;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 
-public class Intake extends SubsystemBase {
-  public WPI_TalonSRX intake = new WPI_TalonSRX(INTAKE_CAN);
+public class Shooter extends SubsystemBase {
+  public WPI_TalonSRX shooterMaster = new WPI_TalonSRX(SHOOTER_MASTER_CAN);
+  public WPI_TalonSRX shooterFOLLOW = new WPI_TalonSRX(SHOOTER_FOLLOW_CAN);
 
-  public Intake() {
-    //
+  public Shooter() {
+    shooterMaster.setInverted(true);
+    shooterFOLLOW.follow(shooterMaster);
+  }
+  public void shoot(double x){
+    shooterMaster.set(x);
   }
 
-  @Override
-  public void periodic() {
-    if (RobotContainer.stick.getRawButton(L2)) {
-      intake.set(0.9);
-    } else {
-      intake.set(0);
-    }
+  
   }
-}
+
+

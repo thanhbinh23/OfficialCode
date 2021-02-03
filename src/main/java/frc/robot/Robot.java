@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.Shooter;
+import frc.robot.Constants.STICK_CONST.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -22,7 +24,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
-
+  private Constants m_Constants;
   private RobotContainer m_robotContainer;
 
   /**
@@ -105,7 +107,10 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
- // empty
+    if (m_robotContainer.stick.getRawButton(8)) {
+    m_robotContainer.shooter.shoot(1);
+    }
+    else {m_robotContainer.shooter.shoot(0);}
   }
 
   @Override
