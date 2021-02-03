@@ -7,7 +7,7 @@
 
 package frc.robot;
 
-
+import static frc.robot.Constants.STICK_CONST.*;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -107,10 +107,11 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    if (m_robotContainer.stick.getRawButton(8)) {
-    m_robotContainer.shooter.shoot(1);
+    if (RobotContainer.stick.getRawButton(L2)) {
+      m_robotContainer.intake1.intake(0.6);
+    } else {
+      m_robotContainer.intake1.intake(0);
     }
-    else {m_robotContainer.shooter.shoot(0);}
   }
 
   @Override
