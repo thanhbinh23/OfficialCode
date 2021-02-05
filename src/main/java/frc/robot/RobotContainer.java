@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.Autonomous;
 import frc.robot.subsystems.Drivebase;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Piston;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
 
@@ -28,6 +29,7 @@ public class RobotContainer {
   public final Drivebase drivebase = new Drivebase();
   private final Autonomous m_autoCommand = new Autonomous(drivebase);
   public static Joystick stick = new Joystick(0);
+  public final Piston piston = new Piston();
   public final Shooter shooter = new Shooter();
   public final Intake intake1 = new Intake();
 
