@@ -14,6 +14,7 @@ import frc.robot.commands.Autonomous;
 import frc.robot.subsystems.Drivebase;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.WheelOfDoom;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /**
@@ -30,6 +31,7 @@ public class RobotContainer {
   public static Joystick stick = new Joystick(0);
   public final Shooter shooter = new Shooter();
   public final Intake intake = new Intake();
+  public final WheelOfDoom WOD = new WheelOfDoom();
 
 
 

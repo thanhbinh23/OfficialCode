@@ -18,10 +18,10 @@ public class WheelOfDoom extends SubsystemBase {
     //
   }
 
-  @Override
-  public void periodic() {
-    if (RobotContainer.stick.getRawButton(RED))
-    {WOD.set(0.5);}
-    else {WOD.stopMotor();}
+  public void spin() {
+    WOD.set(0.5);
+  }
+  public void stop() {
+    WOD.stopMotor();
   }
 }
