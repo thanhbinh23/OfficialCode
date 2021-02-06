@@ -10,7 +10,20 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 
 public class Drivebase extends SubsystemBase {
-  /** Creates a new Drivebase. */
+  private static Drivebase INSTANCE;
+  public static Drivebase getInstance() {
+      // Fast (non-synchronized) check to reduce overhead of acquiring a lock when it's not needed
+      if (INSTANCE == null) { // tránh giá trị bằng null
+          // Lock to make thread safe 
+          synchronized (Drivebase.class) {
+              // check nullness again as multiple threads can reach above null check
+              if (INSTANCE == null) {
+                  INSTANCE = new Drivebase();
+              }
+          }
+      }
+      return INSTANCE;
+  }
 
     public WPI_TalonSRX leftMaster = new WPI_TalonSRX(LEFT_MASTER_CAN);
     public WPI_TalonSRX rightMaster = new WPI_TalonSRX(RIGHT_MASTER_CAN);

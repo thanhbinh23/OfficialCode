@@ -13,6 +13,26 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 
 public class Shooter extends SubsystemBase {
+  private static Shooter INSTANCE;
+
+    /**
+     * Returns the Singleton instance of this Shooter. This static method
+     * should be used by external classes, rather than the constructor
+     * to get the instance of this class. For example: {@code Shooter.getInstance();}
+     */
+    public static Shooter getInstance() {
+        // Fast (non-synchronized) check to reduce overhead of acquiring a lock when it's not needed
+        if (INSTANCE == null) {
+            // Lock to make thread safe 
+            synchronized (Shooter.class) {
+                // check nullness again as multiple threads can reach above null check
+                if (INSTANCE == null) {
+                    INSTANCE = new Shooter();
+                }
+            }
+        }
+        return INSTANCE;
+    }
   public WPI_TalonSRX shooterMaster = new WPI_TalonSRX(SHOOTER_MASTER_CAN);
   public WPI_TalonSRX shooterFOLLOW = new WPI_TalonSRX(SHOOTER_FOLLOW_CAN);
 

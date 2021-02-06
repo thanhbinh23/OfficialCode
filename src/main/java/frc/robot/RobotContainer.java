@@ -29,7 +29,7 @@ public class RobotContainer {
   private final Autonomous m_autoCommand = new Autonomous(drivebase);
   public static Joystick stick = new Joystick(0);
   public final Shooter shooter = new Shooter();
-  public final Intake intake1 = new Intake();
+  public final Intake intake = new Intake();
 
 
 
