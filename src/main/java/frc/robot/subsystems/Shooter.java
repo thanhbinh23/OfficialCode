@@ -24,13 +24,10 @@ public class Shooter extends SubsystemBase {
   public void shoot(double x){
     shooterMaster.set(x);
   }
-  @Override
-  public void periodic() {
-    if (RobotContainer.stick.getRawButton(GREEN)) {
-      shoot(1);
-      }
-      else {shoot(0);}
-    }
+  public void stop(){
+    shooterMaster.stopMotor();
+  }
+  
   }
   
   

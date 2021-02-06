@@ -1,22 +1,23 @@
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
+
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Sucker;
 
-public class Shoot extends CommandBase {
-  private final Shooter m_shooter;
-  public Shoot(Shooter shooter) {
-    m_shooter = shooter;
-    addRequirements(m_shooter);
+public class Suck extends CommandBase {
+  private final Sucker m_sucker;
+  public Suck(Sucker sucker) {
+    m_sucker = sucker;
+    addRequirements(m_sucker);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_shooter.shoot(1);
+    m_sucker.suck();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -28,8 +29,8 @@ public class Shoot extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-  m_shooter.stop();
-}
+    m_sucker.stop();
+  }
 
   // Returns true when the command should end.
   @Override

@@ -115,18 +115,18 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    if (RobotContainer.stick.getRawButton(L2)) {
-      m_robotContainer.intake.suck();
-    }
-    if (RobotContainer.stick.getRawButton(L2) == false) {
-      m_robotContainer.intake.stop();
-    }
-    if (RobotContainer.stick.getRawButton(RED)) {
-      m_robotContainer.WOD.spin();
-    }
-    if (RobotContainer.stick.getRawButton(RED) == false) {
-      m_robotContainer.WOD.stop();
-    }
+    // if (RobotContainer.stick.getRawButton(L2)) {
+    //   m_robotContainer.sucker.suck();
+    // }
+    // if (RobotContainer.stick.getRawButton(L2) == false) {
+    //   m_robotContainer.sucker.stop();
+    // }
+    // if (RobotContainer.stick.getRawButton(RED)) {
+    //   m_robotContainer.WOD.spin();
+    // }
+    // if (RobotContainer.stick.getRawButton(RED) == false) {
+    //   m_robotContainer.WOD.stop();
+    // }
 
   }
 
