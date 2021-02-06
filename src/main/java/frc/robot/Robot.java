@@ -108,7 +108,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     if (RobotContainer.stick.getRawButton(L2)) {
-      m_robotContainer.intake1.intake(0.6);
+      m_robotContainer.intake1.intake(0.5);
     } else {
       m_robotContainer.intake1.intake(0);
     }

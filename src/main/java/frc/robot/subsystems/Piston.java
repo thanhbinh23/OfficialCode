@@ -12,13 +12,20 @@ import frc.robot.RobotContainer;
 
 public class Piston extends SubsystemBase {
   /** Creates a new Piston. */
-  public Solenoid s1 = new Solenoid(0);
+  public DoubleSolenoid s1 = new DoubleSolenoid(0,1);
   public Piston() {
+    
   }
   @Override
   public void periodic() {
     if (RobotContainer.stick.getRawButton(1)) {
-      s1.toggle();
+      s1.set(Value.kReverse);
+    }
+    else if (RobotContainer.stick.getRawButton(2)) {
+      s1.set(Value.kForward);
+    }
+    else {
+      s1.set(Value.kOff);
     }
   }
 }
