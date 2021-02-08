@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -11,17 +12,23 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 
 public class Piston extends SubsystemBase {
-  /** Creates a new Piston. */
-  public DoubleSolenoid s1 = new DoubleSolenoid(0,1);
+  public Compressor c = new Compressor();
+  boolean enabled = c.enabled();
+  boolean pressureSwitch = c.getPressureSwitchValue();
+  double current = c.getCompressorCurrent();
+ 
+
+  public DoubleSolenoid s1 = new DoubleSolenoid(0,0);
   public Piston() {
     //
   }
   @Override
   public void periodic() {
+    
     if (RobotContainer.stick.getRawButton(1)) {
       s1.set(Value.kReverse);
     }
-    else if (RobotContainer.stick.getRawButton(2)) {
+    else if (RobotContainer.stick.getRawButton(3)) {
       s1.set(Value.kForward);
     }
     else {
