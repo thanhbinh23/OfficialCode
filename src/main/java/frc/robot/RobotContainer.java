@@ -14,8 +14,10 @@ import frc.robot.commands.Autonomous;
 import frc.robot.commands.Shoot;
 import frc.robot.commands.Spin;
 import frc.robot.commands.Suck;
+import frc.robot.commands.Test;
 import frc.robot.subsystems.Drivebase;
 import frc.robot.subsystems.Sucker;
+import frc.robot.subsystems.Tester;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.WheelOfDoom;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -37,9 +39,11 @@ public class RobotContainer {
   public final Shooter shooter = new Shooter();
   public final Sucker sucker = new Sucker();
   public final WheelOfDoom WOD = new WheelOfDoom();
+  public final Tester tester = new Tester();
   Command shoot = new Shoot(shooter);
   Command suck = new Suck(sucker);
   Command spin = new Spin(WOD);
+  Command test = new Test(tester);
 
 
 
@@ -53,6 +57,8 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     new JoystickButton(stick, L2).whileActiveOnce(suck);
+    new JoystickButton(stick, R2).whileActiveOnce(shoot);
+    new JoystickButton(stick, RED).whileActiveOnce(test);
   }
 
 
