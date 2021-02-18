@@ -58,7 +58,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
     new JoystickButton(stick, L2).whileActiveOnce(suck);
     new JoystickButton(stick, R2).whileActiveOnce(shoot);
-    new JoystickButton(stick, RED).whileActiveOnce(WOD);
+    new JoystickButton(stick, RED).whileActiveOnce(spin);
    
   }
 
