@@ -27,12 +27,12 @@ public final class Constants {
         public static final int R2 = 8;
     }
     public static final class DRIVE_CONST {
-        public static final int LEFT_MASTER_CAN = 01;
+        public static final int LEFT_MASTER_CAN = 07;
         public static final int LEFT_FOLLOW_CAN = 02;
-        public static final int RIGHT_MASTER_CAN = 11;
+        public static final int RIGHT_MASTER_CAN = 05;
         public static final int RIGHT_FOLLOW_CAN = 03;
-        public static final int INTAKE_CAN = 07 ;
-        public static final int SHOOTER_MASTER_CAN = 05;
+        public static final int INTAKE_CAN = 071 ;
+        public static final int SHOOTER_MASTER_CAN = 051;
         public static final int SHOOTER_FOLLOW_CAN = 06;
         public static final int WOD_CAN = 04;
     }

@@ -24,15 +24,12 @@ public Drivebase() {
   }
 
 public void drive(double x,double y) {
-    //leftMaster.set(x);
-    //rightMaster.set(y);
+    leftMaster.set(x);
+    rightMaster.set(y);
   }
 @Override
 public void periodic() {
-  if (RobotContainer.stick.getRawButton(6)) {
-    drive(RobotContainer.stick.getRawAxis(1) * 0.6, RobotContainer.stick.getRawAxis(3) * 0.6);
-    }
-    else drive(RobotContainer.stick.getRawAxis(1) * -1, RobotContainer.stick.getRawAxis(3) * -1);
+  if (get)
   }
   
 }
