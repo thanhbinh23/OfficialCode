@@ -11,19 +11,15 @@ import static frc.robot.Constants.STICK_CONST.*;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 
-public class Intake extends SubsystemBase {
-  public WPI_TalonSRX intake1 = new WPI_TalonSRX(INTAKE_CAN);
+public class Sucker extends SubsystemBase {
 
-  public Intake() {
-    //
+  public WPI_TalonSRX Sucker = new WPI_TalonSRX(INTAKE_CAN);
+
+  public void suck() {
+    Sucker.set(0.7);
   }
 
-  @Override
-  public void periodic() {
-    //
+  public void stop() {
+    Sucker.stopMotor();
   }
-
-public void intake(double d) {
-  intake1.set(d);
-}
 }

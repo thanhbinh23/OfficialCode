@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 
 public class Shooter extends SubsystemBase {
+  
   public WPI_TalonSRX shooterMaster = new WPI_TalonSRX(SHOOTER_MASTER_CAN);
   public WPI_TalonSRX shooterFOLLOW = new WPI_TalonSRX(SHOOTER_FOLLOW_CAN);
 
@@ -23,13 +24,10 @@ public class Shooter extends SubsystemBase {
   public void shoot(double x){
     shooterMaster.set(x);
   }
-  @Override
-  public void periodic() {
-    if (RobotContainer.stick.getRawButton(8)) {
-      shoot(1);
-      }
-      else {shoot(0);}
-    }
+  public void stop(){
+    shooterMaster.stopMotor();
+  }
+  
   }
   
   

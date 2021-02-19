@@ -11,11 +11,17 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.Autonomous;
+import frc.robot.commands.Shoot;
+import frc.robot.commands.Spin;
+import frc.robot.commands.Suck;
 import frc.robot.subsystems.Drivebase;
-import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Piston;
+import frc.robot.subsystems.Sucker;
 import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.WheelOfDoom;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import static frc.robot.Constants.STICK_CONST.*;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -31,7 +37,11 @@ public class RobotContainer {
   public static Joystick stick = new Joystick(0);
   public final Piston piston = new Piston();
   public final Shooter shooter = new Shooter();
-  public final Intake intake1 = new Intake();
+  public final Sucker sucker = new Sucker();
+  public final WheelOfDoom WOD = new WheelOfDoom();
+  Command shoot = new Shoot(shooter);
+  Command suck = new Suck(sucker);
+  Command spin = new Spin(WOD);
 
 
 
@@ -44,7 +54,7 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
-    //
+    new JoystickButton(stick, L2).whileActiveOnce(suck);
   }
 
 

@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 
 public class Drivebase extends SubsystemBase {
-  /** Creates a new Drivebase. */
 
     public WPI_TalonSRX leftMaster = new WPI_TalonSRX(LEFT_MASTER_CAN);
     public WPI_TalonSRX rightMaster = new WPI_TalonSRX(RIGHT_MASTER_CAN);
