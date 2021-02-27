@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import static frc.robot.Constants.DRIVE_CONST.*;
 import static frc.robot.Constants.STICK_CONST.*;
+import static frc.robot.Constants.SPID_CONST.*;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
@@ -16,7 +17,7 @@ public class Sucker extends SubsystemBase {
   public WPI_TalonSRX Sucker = new WPI_TalonSRX(INTAKE_CAN);
 
   public void suck() {
-    Sucker.set(0.4);
+    Sucker.set(INTAKE_SPEED);
   }
 
   public void stop() {

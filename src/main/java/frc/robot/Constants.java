@@ -44,5 +44,13 @@ public final class Constants {
         // degrees / 0.02s
         public static final double kToleranceAngularVelocity = 0.08;
     }
+    public static final class SPID_CONST {
+        public static final double WOD_SPEED = 0.5; 
+        public static final double LOADER_SPEED = 1;
+        public static final double SHOOTER_SPEED = 1;
+        public static  final double INTAKE_SPEED = 0.4;
+        
+
+    }
 }
     
