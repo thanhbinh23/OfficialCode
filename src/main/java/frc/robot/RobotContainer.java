@@ -39,9 +39,11 @@ public class RobotContainer {
   public final Shooter shooter = new Shooter();
   public final Sucker sucker = new Sucker();
   public final WheelOfDoom WOD = new WheelOfDoom();
+  
   Command shoot = new Shoot(shooter);
   Command suck = new Suck(sucker);
   Command spin = new Spin(WOD);
+  
 
 
 
@@ -55,6 +57,9 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     new JoystickButton(stick, L2).whileActiveOnce(suck);
+    new JoystickButton(stick, R2).whileActiveOnce(shoot);
+    new JoystickButton(stick, RED).whileActiveOnce(spin);
+   
   }
 
 
