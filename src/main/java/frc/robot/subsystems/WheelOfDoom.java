@@ -6,7 +6,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import static frc.robot.Constants.DRIVE_CONST.*;
-
+import static frc.robot.Constants.SPID_CONST.*;
 import static frc.robot.Constants.STICK_CONST.*;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -19,7 +19,7 @@ public class WheelOfDoom extends SubsystemBase {
   }
 
   public void spin() {
-    WOD.set(0.5);
+    WOD.set(WOD_SPEED);
   }
   public void stop() {
     WOD.stopMotor();
