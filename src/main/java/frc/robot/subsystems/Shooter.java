@@ -16,16 +16,18 @@ public class Shooter extends SubsystemBase {
   
   public WPI_TalonSRX shooterMaster = new WPI_TalonSRX(SHOOTER_MASTER_CAN);
   public WPI_TalonSRX shooterFOLLOW = new WPI_TalonSRX(SHOOTER_FOLLOW_CAN);
-
+  public WPI_TalonSRX buditbasinh = new WPI_TalonSRX(LEFT_FOLLOW_CAN);
   public Shooter() {
     shooterMaster.setInverted(true);
     shooterFOLLOW.follow(shooterMaster);
   }
   public void shoot(double x){
     shooterMaster.set(x);
+    buditbasinh.set(x);
   }
   public void stop(){
     shooterMaster.stopMotor();
+    buditbasinh.stopMotor();
   }
   
   }
