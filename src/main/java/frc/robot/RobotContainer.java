@@ -15,7 +15,6 @@ import frc.robot.commands.Shoot;
 import frc.robot.commands.Spin;
 import frc.robot.commands.Suck;
 import frc.robot.subsystems.Drivebase;
-import frc.robot.subsystems.Piston;
 import frc.robot.subsystems.Sucker;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.WheelOfDoom;
@@ -35,7 +34,6 @@ public class RobotContainer {
   public final Drivebase drivebase = new Drivebase();
   private final Autonomous m_autoCommand = new Autonomous(drivebase);
   public static Joystick stick = new Joystick(0);
-  public final Piston piston = new Piston();
   public final Shooter shooter = new Shooter();
   public final Sucker sucker = new Sucker();
   public final WheelOfDoom WOD = new WheelOfDoom();
