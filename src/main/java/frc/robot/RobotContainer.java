@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.AngleUp;
 import frc.robot.commands.Autonomous;
 import frc.robot.commands.Climb;
 import frc.robot.commands.Open;
@@ -18,6 +19,7 @@ import frc.robot.commands.Spin;
 import frc.robot.commands.Suck;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Drivebase;
+import frc.robot.subsystems.Hood;
 import frc.robot.subsystems.Opener;
 import frc.robot.subsystems.Piston;
 import frc.robot.subsystems.Sucker;
@@ -26,6 +28,8 @@ import frc.robot.subsystems.WheelOfDoom;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import static frc.robot.Constants.STICK_CONST.*;
+
+import java.time.Year;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -45,12 +49,15 @@ public class RobotContainer {
   public final Piston piston = new Piston();
   public final Climber climber = new Climber();
   public final Opener opener = new Opener();
+  public final Hood hood = new Hood();
 
   Command climb = new Climb(climber);
   Command shoot = new Shoot(shooter);
   Command suck = new Suck(sucker);
   Command spin = new Spin(WOD);
   Command Open = new Open(opener);
+  Command AngleUp = new AngleUp(hood, 1);
+  Command AngleDown = new AngleUp(hood, -1);
 
   
 
@@ -70,6 +77,8 @@ public class RobotContainer {
     new JoystickButton(stick, RED).whileActiveOnce(Open);
     new JoystickButton(stick, BLUE).whileActiveOnce(climb);
     new JoystickButton(stick, GREEN).whileActiveOnce(spin);
+    new JoystickButton(stick, YELLOW).whileActiveOnce(AngleUp);
+    new JoystickButton(stick, YELLOW).and(new JoystickButton(stick, R1)).whileActiveOnce(AngleDown);
   }
 
 

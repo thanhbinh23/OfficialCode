@@ -20,7 +20,7 @@ public final class Constants {
         public static final int GREEN = 1;
         public static final int RED = 2;
         public static final int BLUE = 3;
-        public static final int PINK = 4;
+        public static final int YELLOW = 4;
         public static final int L1 = 5;
         public static final int R1 = 6;
         public static final int L2 = 7;

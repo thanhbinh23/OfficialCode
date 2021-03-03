@@ -5,6 +5,8 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import static frc.robot.Constants.DRIVE_CONST.*;
 
 import static frc.robot.Constants.STICK_CONST.*;
@@ -12,24 +14,22 @@ import static frc.robot.Constants.STICK_CONST.*;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 
-public class Shooter extends SubsystemBase {
+public class Hood extends SubsystemBase {
+  public WPI_TalonSRX Hood = new WPI_TalonSRX(HOOD_CAN);
 
-  public WPI_TalonSRX shooterMaster = new WPI_TalonSRX(SHOOTER_MASTER_CAN);
-  public WPI_TalonSRX shooterFOLLOW = new WPI_TalonSRX(SHOOTER_FOLLOW_CAN);
-  public WPI_TalonSRX input = new WPI_TalonSRX(INPUT_CAN);
-
-  public Shooter() {
-    shooterMaster.setInverted(true);
-    shooterFOLLOW.follow(shooterMaster);
-    input.follow(shooterMaster);
+  public Hood() {
+    //
   }
 
-  public void shoot() {
-    shooterMaster.set(1);
+  public void AngleUp() {
+    Hood.set(0.3);
+  }
+
+  public void AngleDown() {
+    Hood.set(-0.3);
   }
 
   public void stop() {
-    shooterMaster.stopMotor();
+    Hood.stopMotor();
   }
-
 }
