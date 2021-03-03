@@ -11,10 +11,12 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.Autonomous;
+import frc.robot.commands.Open;
 import frc.robot.commands.Shoot;
 import frc.robot.commands.Spin;
 import frc.robot.commands.Suck;
 import frc.robot.subsystems.Drivebase;
+import frc.robot.subsystems.Piston;
 import frc.robot.subsystems.Sucker;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.WheelOfDoom;
@@ -37,10 +39,14 @@ public class RobotContainer {
   public final Shooter shooter = new Shooter();
   public final Sucker sucker = new Sucker();
   public final WheelOfDoom WOD = new WheelOfDoom();
+  public final Piston piston = new Piston();
+
   
   Command shoot = new Shoot(shooter);
-  Command suck = new Suck(sucker);
+  Command suck = new Suck(sucker, 0.4);
   Command spin = new Spin(WOD);
+  Command Open = new Open(piston);
+
   
 
 
@@ -57,7 +63,8 @@ public class RobotContainer {
     new JoystickButton(stick, L2).whileActiveOnce(suck);
     new JoystickButton(stick, R2).whileActiveOnce(shoot);
     new JoystickButton(stick, RED).whileActiveOnce(spin);
-   
+    new JoystickButton(stick, R1).whileActiveOnce(Open);
+    
   }
 
 

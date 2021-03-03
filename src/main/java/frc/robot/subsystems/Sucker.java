@@ -15,8 +15,8 @@ public class Sucker extends SubsystemBase {
 
   public WPI_TalonSRX Sucker = new WPI_TalonSRX(INTAKE_CAN);
 
-  public void suck() {
-    Sucker.set(0.4);
+  public void suck(double x) {
+    Sucker.set(x);
   }
 
   public void stop() {

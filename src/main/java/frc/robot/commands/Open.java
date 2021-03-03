@@ -5,21 +5,20 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Sucker;
+import frc.robot.subsystems.Piston;
+import frc.robot.subsystems.Shooter;
 
-public class Suck extends CommandBase {
-  private final Sucker m_sucker;
-  public Suck(Sucker sucker, double speed) {
-    double x = speed;
-    m_sucker = sucker;
-    addRequirements(m_sucker);
+public class Open extends CommandBase {
+  private final Piston m_piston;
+  public Open(Piston piston) {
+    m_piston = piston;
+    addRequirements(m_piston);
   }
 
   // Called when the command is initially scheduled.
-
-  public void initialize(double x) {
-   
-    m_sucker.suck(x);
+  @Override
+  public void initialize() {
+    m_piston.Open();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -31,8 +30,8 @@ public class Suck extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_sucker.stop();
-  }
+  //
+}
 
   // Returns true when the command should end.
   @Override
