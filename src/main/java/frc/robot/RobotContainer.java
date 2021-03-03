@@ -67,7 +67,7 @@ public class RobotContainer {
     new JoystickButton(stick, R2).whileActiveOnce(shoot);
     new JoystickButton(stick, RED).whileActiveOnce(spin);
     new JoystickButton(stick, R1).whileActiveOnce(Open);
-    
+    new JoystickButton(stick, BLUE).whileActiveOnce(climb);
   }
 
 

@@ -13,7 +13,6 @@ public class Climb extends CommandBase {
   public Climb(Climber climber) {
     m_climber = climber;
     addRequirements(m_climber);
-    // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
