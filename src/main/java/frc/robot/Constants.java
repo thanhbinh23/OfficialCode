@@ -28,14 +28,17 @@ public final class Constants {
     }
     public static final class DRIVE_CONST {
         public static final int LEFT_MASTER_CAN = 07;
-        public static final int LEFT_FOLLOW_CAN = 02;
+        public static final int LEFT_FOLLOW_CAN = 03;
         public static final int RIGHT_MASTER_CAN = 05;
-        public static final int RIGHT_FOLLOW_CAN = 03;
-        public static final int INTAKE_CAN = 07 ;
-        public static final int SHOOTER_MASTER_CAN = 05;
+        public static final int RIGHT_FOLLOW_CAN = 11;
+        public static final int INTAKE_CAN = 13 ;
+        public static final int SHOOTER_MASTER_CAN = 02;
         public static final int SHOOTER_FOLLOW_CAN = 06;
-        public static final int WOD_CAN = 04;
-        public static final int CLIMBER_CAN = 9;
+        public static final int WOD_CAN = 15;
+        public static final int CLIMBER_CAN = 05;
+        public static final int INPUT_CAN = 04;
+        public static final int HOOD_CAN = 12;
+        public static final int OPEN_CAN = 00;
     }
     public static final class PID_CONST {
         public static final double kP = 1.0/180;

@@ -18,6 +18,7 @@ import frc.robot.commands.Spin;
 import frc.robot.commands.Suck;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Drivebase;
+import frc.robot.subsystems.Opener;
 import frc.robot.subsystems.Piston;
 import frc.robot.subsystems.Sucker;
 import frc.robot.subsystems.Shooter;
@@ -43,12 +44,13 @@ public class RobotContainer {
   public final WheelOfDoom WOD = new WheelOfDoom();
   public final Piston piston = new Piston();
   public final Climber climber = new Climber();
+  public final Opener opener = new Opener();
 
   Command climb = new Climb(climber);
   Command shoot = new Shoot(shooter);
   Command suck = new Suck(sucker);
   Command spin = new Spin(WOD);
-  Command Open = new Open(piston);
+  Command Open = new Open(opener);
 
   
 
@@ -63,11 +65,11 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
-    new JoystickButton(stick, L2).whileActiveOnce(suck);
-    new JoystickButton(stick, R2).whileActiveOnce(shoot);
-    new JoystickButton(stick, RED).whileActiveOnce(spin);
-    new JoystickButton(stick, R1).whileActiveOnce(Open);
+    new JoystickButton(stick, L1).whileActiveOnce(suck);
+    new JoystickButton(stick, R1).whileActiveOnce(shoot);
+    new JoystickButton(stick, RED).whileActiveOnce(Open);
     new JoystickButton(stick, BLUE).whileActiveOnce(climb);
+    // new JoystickButton(stick, GREEN).whileActiveOnce(spin);
   }
 
 

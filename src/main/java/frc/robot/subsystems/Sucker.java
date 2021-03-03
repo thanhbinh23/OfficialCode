@@ -5,6 +5,8 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import static frc.robot.Constants.DRIVE_CONST.*;
 import static frc.robot.Constants.STICK_CONST.*;
 
@@ -13,7 +15,7 @@ import frc.robot.RobotContainer;
 
 public class Sucker extends SubsystemBase {
 
-  public WPI_TalonSRX Sucker = new WPI_TalonSRX(INTAKE_CAN);
+  public WPI_VictorSPX Sucker = new WPI_VictorSPX(INTAKE_CAN);
 
   public void suck() {
     Sucker.set(1);
