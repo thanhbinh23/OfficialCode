@@ -6,20 +6,22 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import static frc.robot.Constants.DRIVE_CONST.*;
+
 import static frc.robot.Constants.STICK_CONST.*;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 
-public class Sucker extends SubsystemBase {
-
-  public WPI_TalonSRX Sucker = new WPI_TalonSRX(INTAKE_CAN);
-
-  public void suck() {
-    Sucker.set(1);
+public class Climber extends SubsystemBase {
+  public WPI_TalonSRX Climber = new WPI_TalonSRX(CLIMBER_CAN);
+  public Climber() {
+    //
   }
 
+  public void climb() {
+    Climber.set(1);
+  }
   public void stop() {
-    Sucker.stopMotor();
+    Climber.stopMotor();
   }
 }

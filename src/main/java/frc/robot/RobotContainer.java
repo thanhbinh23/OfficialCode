@@ -11,10 +11,12 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.Autonomous;
+import frc.robot.commands.Climb;
 import frc.robot.commands.Open;
 import frc.robot.commands.Shoot;
 import frc.robot.commands.Spin;
 import frc.robot.commands.Suck;
+import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Drivebase;
 import frc.robot.subsystems.Piston;
 import frc.robot.subsystems.Sucker;
@@ -40,10 +42,11 @@ public class RobotContainer {
   public final Sucker sucker = new Sucker();
   public final WheelOfDoom WOD = new WheelOfDoom();
   public final Piston piston = new Piston();
+  public final Climber climber = new Climber();
 
-  
+  Command climb = new Climb(climber);
   Command shoot = new Shoot(shooter);
-  Command suck = new Suck(sucker, 0.4);
+  Command suck = new Suck(sucker);
   Command spin = new Spin(WOD);
   Command Open = new Open(piston);
 
