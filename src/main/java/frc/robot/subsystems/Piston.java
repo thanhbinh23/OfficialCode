@@ -13,28 +13,17 @@ import frc.robot.RobotContainer;
 
 public class Piston extends SubsystemBase {
   /** Creates a new Piston. */
-  // public Solenoid s1 = new Solenoid(0);
-  // public Compressor c = new Compressor();
+  public Solenoid s1 = new Solenoid(1);
+  public Compressor c = new Compressor();
   public Piston() {
     //
   }
-  public void Open() {
-    // s1.set(true);
+  public void open() {
+    s1.set(true);
   }
   public void close() {
-    // s1.set(false);
+    s1.set(false);
   }
-  // @Override
-  // public void periodic() {
-  //   if (RobotContainer.stick.getRawButton(1)) {
-  //     s1.set(Value.kReverse);
-  //   }
-  //   else if (RobotContainer.stick.getRawButton(2)) {
-  //     s1.set(Value.kForward);
-  //   }
-  //   else {
-  //     s1.set(Value.kOff);
-  //   }
-  // }
+
 }
 

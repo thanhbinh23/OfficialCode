@@ -17,6 +17,7 @@ import frc.robot.commands.Open;
 import frc.robot.commands.Shoot;
 import frc.robot.commands.Spin;
 import frc.robot.commands.Suck;
+import frc.robot.commands.PistonExtend;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Drivebase;
 import frc.robot.subsystems.Hood;
@@ -58,6 +59,7 @@ public class RobotContainer {
   Command Open = new Open(opener);
   Command AngleUp = new AngleUp(hood, 1);
   Command AngleDown = new AngleUp(hood, -1);
+  Command PistonExtend = new PistonExtend(piston);
 
   
 
@@ -79,6 +81,9 @@ public class RobotContainer {
     new JoystickButton(stick, GREEN).whileActiveOnce(spin);
     new JoystickButton(stick, YELLOW).whileActiveOnce(AngleUp);
     new JoystickButton(stick, YELLOW).and(new JoystickButton(stick, R1)).whileActiveOnce(AngleDown);
+    new JoystickButton(stick, S1).whileHeld(PistonExtend);
+
+
   }
 
 

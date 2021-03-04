@@ -6,13 +6,18 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Piston;
-import frc.robot.subsystems.Opener;
 
-public class Open extends CommandBase {
-  private final Opener m_opener;
-  public Open(Opener opener) {
-    m_opener = opener;
-    addRequirements(m_opener);
+public class PistonExtend extends CommandBase {
+  private final Piston m_piston;
+  public PistonExtend(Piston penis) {
+    m_piston = penis;
+    addRequirements(m_piston);
+  }
+
+  // Called when the command is initially scheduled.
+  @Override
+  public void initialize() {
+    m_piston.open();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -24,8 +29,8 @@ public class Open extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-  m_opener.stop();
-}
+    m_piston.close();
+  }
 
   // Returns true when the command should end.
   @Override

@@ -23,8 +23,11 @@ public final class Constants {
         public static final int YELLOW = 4;
         public static final int L1 = 5;
         public static final int R1 = 6;
-        public static final int L2 = 7;
-        public static final int R2 = 8;
+        public static final int BACK = 7;
+        public static final int START = 8;
+        public static final int S1 = 9;
+        public static final int S2 = 10;
+
     }
     public static final class DRIVE_CONST {
         public static final int LEFT_MASTER_CAN = 07;
