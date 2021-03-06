@@ -38,8 +38,8 @@ public final class Constants {
         public static final int SHOOTER_MASTER_CAN = 02;
         public static final int SHOOTER_FOLLOW_CAN = 06;
         public static final int WOD_CAN = 15;
-        public static final int CLIMBER_CAN = 05;
-        public static final int INPUT_CAN = 04;
+        
+        public static final int LOADER_CAN = 04;
         public static final int HOOD_CAN = 12;
         public static final int OPEN_CAN = 00;
     }

@@ -16,12 +16,10 @@ public class Shooter extends SubsystemBase {
 
   public WPI_TalonSRX shooterMaster = new WPI_TalonSRX(SHOOTER_MASTER_CAN);
   public WPI_TalonSRX shooterFOLLOW = new WPI_TalonSRX(SHOOTER_FOLLOW_CAN);
-  public WPI_TalonSRX input = new WPI_TalonSRX(INPUT_CAN);
-
+  
   public Shooter() {
     shooterMaster.setInverted(true);
     shooterFOLLOW.follow(shooterMaster);
-    input.follow(shooterMaster);
   }
 
   public void shoot() {
@@ -31,5 +29,7 @@ public class Shooter extends SubsystemBase {
   public void stop() {
     shooterMaster.stopMotor();
   }
+ 
+
 
 }

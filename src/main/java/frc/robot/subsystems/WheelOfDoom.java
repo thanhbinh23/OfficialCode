@@ -21,8 +21,8 @@ public class WheelOfDoom extends SubsystemBase {
     //
   }
 
-  public void spin() {
-    WOD.set(0.7);
+  public void spin(double spd) {
+    WOD.set(spd);
   }
 
   public void stop() {

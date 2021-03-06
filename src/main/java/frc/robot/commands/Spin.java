@@ -9,8 +9,10 @@ import frc.robot.subsystems.WheelOfDoom;
 
 public class Spin extends CommandBase {
   private final WheelOfDoom m_WOD;
-  public Spin(WheelOfDoom wod) {
+  private double x;
+  public Spin(WheelOfDoom wod, double spd) {
     m_WOD = wod;
+    x = spd;
     addRequirements(m_WOD);
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -18,7 +20,7 @@ public class Spin extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_WOD.spin();
+    m_WOD.spin(x);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

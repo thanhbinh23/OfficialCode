@@ -9,8 +9,8 @@ import frc.robot.subsystems.Piston;
 
 public class PistonExtend extends CommandBase {
   private final Piston m_piston;
-  public PistonExtend(Piston penis) {
-    m_piston = penis;
+  public PistonExtend(Piston piston) {
+    m_piston = piston;
     addRequirements(m_piston);
   }
 

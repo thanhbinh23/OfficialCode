@@ -5,20 +5,21 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Climber;
+import frc.robot.subsystems.Loader;
 import frc.robot.subsystems.WheelOfDoom;
 
-public class Climb extends CommandBase {
-  private final Climber m_climber;
-  public Climb(Climber climber) {
-    m_climber = climber;
-    addRequirements(m_climber);
+public class Load extends CommandBase {
+  private final Loader m_loader;
+  public Load(Loader loader) {
+    m_loader = loader;
+    addRequirements(m_loader);
+    // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_climber.climb();
+    m_loader.load();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -30,7 +31,7 @@ public class Climb extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_climber.stop();
+    m_loader.stop();
   }
 
   // Returns true when the command should end.

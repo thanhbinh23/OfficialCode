@@ -5,25 +5,21 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-
 import static frc.robot.Constants.DRIVE_CONST.*;
-
-import static frc.robot.Constants.STICK_CONST.*;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.RobotContainer;
 
-public class Climber extends SubsystemBase {
-  public WPI_VictorSPX Climber = new WPI_VictorSPX(CLIMBER_CAN);
-  public Climber() {
+public class Loader extends SubsystemBase {
+  public WPI_TalonSRX loader = new WPI_TalonSRX(LOADER_CAN);
+  public Loader() {
     //
   }
 
-  public void climb() {
-    Climber.set(1);
+  public void load() {
+     loader.set(1);
   }
   public void stop() {
-    Climber.stopMotor();
-  }
+    loader.set(0);
+ }
+  
 }
+
