@@ -24,4 +24,5 @@ public class Opener extends SubsystemBase {
   public void stop() {
     Opener.stopMotor();
   }
+  
 }
