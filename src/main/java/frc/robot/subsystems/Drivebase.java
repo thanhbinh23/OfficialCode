@@ -31,10 +31,10 @@ public class Drivebase extends SubsystemBase {
 
   @Override
   public void periodic() {
-    if (RobotContainer.logitech.getRawAxis(3) > 0.6) {
-      drive(RobotContainer.logitech.getRawAxis(1) * 0.6, RobotContainer.logitech.getRawAxis(5) * 0.6);
+    if (RobotContainer.logitech.getRawButton(8)) {
+      drive(RobotContainer.logitech.getRawAxis(1) * 0.6, RobotContainer.logitech.getRawAxis(3) * 0.6);
     } else {
-      drive(RobotContainer.logitech.getRawAxis(1) * 0.3, RobotContainer.logitech.getRawAxis(5) * 0.3);
+      drive(RobotContainer.logitech.getRawAxis(1) * 0.3, RobotContainer.logitech.getRawAxis(3) * 0.3);
     }
   }
 
