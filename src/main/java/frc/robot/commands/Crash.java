@@ -4,26 +4,21 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Loader;
-import frc.robot.subsystems.WheelOfDoom;
+import java.io.IOException;
 
-public class Load extends CommandBase {
-  private final Loader m_loader;
-  double speed;
-  public Load(Loader loader,double speed) {
-    this.speed = speed;
-    m_loader = loader;
-    addRequirements(m_loader);
-    // Use addRequirements() here to declare subsystem dependencies.
+import edu.wpi.first.wpilibj2.command.CommandBase;
+
+
+public class Crash extends CommandBase {
+  public Crash() {
+      //
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    m_loader.load(speed);
+  public void initialize(){
+    ((Crash)null).end(true); 
   }
-
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
@@ -31,14 +26,8 @@ public class Load extends CommandBase {
   }
 
   // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {
-    m_loader.load(0);
-  }
+  
 
   // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    return false;
-  }
+  
 }

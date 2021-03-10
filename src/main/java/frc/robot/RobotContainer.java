@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.AngleUp;
 import frc.robot.commands.Autonomous;
+import frc.robot.commands.Crash;
 import frc.robot.commands.Load;
 import frc.robot.commands.Open;
 import frc.robot.commands.Shoot;
@@ -28,6 +29,7 @@ import frc.robot.subsystems.Sucker;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.WheelOfDoom;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import static frc.robot.Constants.STICK_CONST.*;
 
@@ -56,14 +58,18 @@ public class RobotContainer {
 
   
   Command shoot = new Shoot(shooter);
-  Command suck = new Suck(sucker);
-  Command spin = new Spin(WOD, 0.5);
-  Command Open = new Open(opener);
+  Command suck = new Suck(sucker, 0.6);
+  Command spit = new Suck(sucker, -0.6);
+  Command spin = new Spin(WOD, 0.4);
+  Command Open = new Open(opener, 0.5);
+  Command Close = new Open(opener, -0.5);
   Command AngleUp = new AngleUp(hood, 1);
   Command AngleDown = new AngleUp(hood, -1);
   Command PistonExtend = new PistonExtend(piston);
-  Command Load = new Load(loader);
-  Command spinR = new Spin(WOD, -0.5);
+  Command Load = new Load(loader, 0.6);
+  Command Unload = new Load(loader,-0.6);
+  
+  Command spinR = new Spin(WOD, -0.4);
 
   
 
@@ -79,15 +85,18 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     new JoystickButton(logitech, L1).whileActiveOnce(suck);
+    new JoystickButton(logitech, R1).whileActiveOnce(spit);
     new JoystickButton(xbox, R1).whileActiveOnce(shoot);
     new JoystickButton(logitech, GREENlog).whileActiveOnce(Open);
     new JoystickButton(logitech, BLUElog).whileActiveOnce(spin);
     new JoystickButton(xbox, YELLOW).whileActiveOnce(AngleUp);
     new JoystickButton(xbox, GREEN).whileActiveOnce(AngleUp);
-    new JoystickButton(logitech, YELLOWlog).whileActiveOnce(PistonExtend);
+    new JoystickButton(xbox, BLUE).whileActiveOnce(Unload);
+    
+    new JoystickButton(logitech, YELLOWlog).whileActiveOnce(Close);
     new JoystickButton(xbox, L1).whileActiveOnce(Load);
     new JoystickButton(logitech, REDlog).whileActiveOnce(spinR);
-
+    new JoystickButton(xbox, 9).whenPressed(new Crash());
   }
 
 

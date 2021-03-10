@@ -9,16 +9,21 @@ import frc.robot.subsystems.Piston;
 import frc.robot.subsystems.Opener;
 
 public class Open extends CommandBase {
+  private double x;
   private final Opener m_opener;
-  public Open(Opener opener) {
+  public Open(Opener opener, double spd) {
     m_opener = opener;
+    x=spd;
     addRequirements(m_opener);
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
+  @Override
+  public void initialize() {
+    m_opener.Open(x);
+  }
   @Override
   public void execute() {
-    //
+//
   }
 
   // Called once the command ends or is interrupted.

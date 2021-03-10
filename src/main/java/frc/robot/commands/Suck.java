@@ -9,8 +9,10 @@ import frc.robot.subsystems.Sucker;
 
 public class Suck extends CommandBase {
   private final Sucker m_sucker;
-  public Suck(Sucker sucker) {
+  double speed;
+  public Suck(Sucker sucker, double speed) {
     m_sucker = sucker;
+    this.speed = speed;
     addRequirements(m_sucker);
   }
 
@@ -18,7 +20,7 @@ public class Suck extends CommandBase {
 @Override
   public void initialize() {
    
-    m_sucker.suck();
+    m_sucker.suck(speed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

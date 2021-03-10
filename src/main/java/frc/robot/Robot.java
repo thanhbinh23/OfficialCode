@@ -8,6 +8,15 @@
 package frc.robot;
 
 import static frc.robot.Constants.STICK_CONST.*;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+
+import javax.swing.plaf.synth.SynthStyle;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -27,6 +36,7 @@ import frc.robot.commands.Spin;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
+  FileOutputStream writer;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -53,7 +63,8 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
 
     SmartDashboard.putNumber("foo", SmartDashboard.getNumber("foo", 0) + 1);
-    // Runs the Scheduler. This is responsible for polling buttons, adding
+    
+// Runs the Scheduler. This is responsible for polling buttons, adding
     // newly-scheduled
     // commands, running already-scheduled commands, removing finished or
     // interrupted commands,
@@ -68,12 +79,20 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
-    //
+    if(writer != null){
+    try {
+      writer.close();
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } //
+  }
   }
 
   @Override
   public void disabledPeriodic() {
     //
+    
   }
 
   /**
@@ -115,6 +134,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+        
     //  m_wod.spin();
   }
 
@@ -122,13 +142,28 @@ public class Robot extends TimedRobot {
   public void testInit() {
     // Cancels all running commands at the start of test mode.
     CommandScheduler.getInstance().cancelAll();
+    try {
+      writer = new FileOutputStream("home/lvuser/path.txt");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  
   }
 
   /**
    * This function is called periodically during test mode.
    */
+  
   @Override
   public void testPeriodic() {
-    //
+    try {
+      ByteBuffer buffer = ByteBuffer.allocate(8);
+      buffer.putDouble(RobotContainer.logitech.getRawAxis(1));
+      buffer.putDouble(RobotContainer.logitech.getRawAxis(3));
+      writer.write(buffer.array());
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
   }
 }

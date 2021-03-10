@@ -17,8 +17,8 @@ public class Opener extends SubsystemBase {
 
   public WPI_VictorSPX Opener = new WPI_VictorSPX(OPEN_CAN);
 
-  public void Open() {
-    Opener.set(1);
+  public void Open(double x) {
+    Opener.set(x);
   }
 
   public void stop() {

@@ -14,12 +14,9 @@ public class Loader extends SubsystemBase {
     //
   }
 
-  public void load() {
-     loader.set(1);
+  public void load(double speed) {
+     loader.set(speed);
   }
-  public void stop() {
-    loader.set(0);
- }
   
 }
 

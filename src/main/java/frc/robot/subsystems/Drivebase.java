@@ -6,8 +6,11 @@ package frc.robot.subsystems;
 
 import static frc.robot.Constants.STICK_CONST.*;
 import static frc.robot.Constants.DRIVE_CONST.*;
+
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Robot;
 import frc.robot.RobotContainer;
 
 public class Drivebase extends SubsystemBase {
@@ -19,6 +22,11 @@ public class Drivebase extends SubsystemBase {
 
   public Drivebase() {
     leftFollow.follow(leftMaster);
+    leftFollow.setNeutralMode(NeutralMode.Brake);
+    leftMaster.setNeutralMode(NeutralMode.Brake);
+    rightFollow.setNeutralMode(NeutralMode.Brake);
+    rightMaster.setNeutralMode(NeutralMode.Brake);
+
     rightFollow.follow(rightMaster);
     leftMaster.setInverted(true);
     leftFollow.setInverted(true);
@@ -31,10 +39,16 @@ public class Drivebase extends SubsystemBase {
 
   @Override
   public void periodic() {
-    if (RobotContainer.logitech.getRawButton(8)) {
-      drive(RobotContainer.logitech.getRawAxis(1) * 0.6, RobotContainer.logitech.getRawAxis(3) * 0.6);
+    if(RobotContainer.logitech.getRawButton(8) && RobotContainer.logitech.getRawButton(7)){
+      drive(RobotContainer.logitech.getRawAxis(1) * 0.9, RobotContainer.logitech.getRawAxis(3) * 0.9);
+  
+    }
+    else if (RobotContainer.logitech.getRawButton(8)) {
+      drive(RobotContainer.logitech.getRawAxis(1) * 0.25, RobotContainer.logitech.getRawAxis(3) * 0.9);
+    } else if (RobotContainer.logitech.getRawButton(7)) {
+      drive(RobotContainer.logitech.getRawAxis(1) * 0.9, RobotContainer.logitech.getRawAxis(3) * 0.25);
     } else {
-      drive(RobotContainer.logitech.getRawAxis(1) * 0.3, RobotContainer.logitech.getRawAxis(3) * 0.3);
+      drive(RobotContainer.logitech.getRawAxis(1) * 0.7, RobotContainer.logitech.getRawAxis(3) * 0.7);
     }
   }
 

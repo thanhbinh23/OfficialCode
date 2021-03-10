@@ -17,8 +17,8 @@ public class Sucker extends SubsystemBase {
 
   public WPI_VictorSPX Sucker = new WPI_VictorSPX(INTAKE_CAN);
 
-  public void suck() {
-    Sucker.set(-0.6);
+  public void suck(double speed) {
+    Sucker.set(speed);
   }
 
   public void stop() {
