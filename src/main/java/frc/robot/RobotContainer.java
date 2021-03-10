@@ -80,13 +80,13 @@ public class RobotContainer {
   private void configureButtonBindings() {
     new JoystickButton(logitech, L1).whileActiveOnce(suck);
     new JoystickButton(xbox, R1).whileActiveOnce(shoot);
-    new JoystickButton(logitech, GREEN).whileActiveOnce(Open);
-    new JoystickButton(logitech, BLUE).whileActiveOnce(spin);
+    new JoystickButton(logitech, GREENlog).whileActiveOnce(Open);
+    new JoystickButton(logitech, BLUElog).whileActiveOnce(spin);
     new JoystickButton(xbox, YELLOW).whileActiveOnce(AngleUp);
     new JoystickButton(xbox, GREEN).whileActiveOnce(AngleUp);
-    new JoystickButton(logitech, YELLOW).whileActiveOnce(PistonExtend);
+    new JoystickButton(logitech, YELLOWlog).whileActiveOnce(PistonExtend);
     new JoystickButton(xbox, L1).whileActiveOnce(Load);
-    new JoystickButton(logitech, RED).whileActiveOnce(spinR);
+    new JoystickButton(logitech, REDlog).whileActiveOnce(spinR);
 
   }
 

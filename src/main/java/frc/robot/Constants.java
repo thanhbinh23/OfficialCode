@@ -21,6 +21,10 @@ public final class Constants {
         public static final int RED = 2;
         public static final int BLUE = 3;
         public static final int YELLOW = 4;
+        public static final int GREENlog = 2;
+        public static final int REDlog = 3;
+        public static final int BLUElog = 1;
+        public static final int YELLOWlog = 4;
         public static final int L1 = 5;
         public static final int R1 = 6;
         public static final int BACK = 7;
