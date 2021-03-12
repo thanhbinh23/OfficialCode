@@ -47,7 +47,7 @@ public class Drivebase extends SubsystemBase {
     } else if (RobotContainer.logitech.getRawButton(7)) {
       drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(3) * 0.35);
     } else {
-      drive(RobotContainer.logitech.getRawAxis(1) * 0.9, RobotContainer.logitech.getRawAxis(3) * 0.9);
+      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(3) * 1);
     }
   }
 
