@@ -36,7 +36,6 @@ import frc.robot.commands.Spin;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
-  FileOutputStream writer;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -79,9 +78,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
-    if(writer != null){
+    if(m_robotContainer.drivebase.writer != null){
     try {
-      writer.close();
+      m_robotContainer.drivebase.writer.close();
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -127,6 +126,11 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    try {
+      m_robotContainer.drivebase.writer = new FileOutputStream("home/lvuser/path.txt");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   /**
@@ -134,7 +138,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-        
+    
     //  m_wod.spin();
   }
 
@@ -142,11 +146,7 @@ public class Robot extends TimedRobot {
   public void testInit() {
     // Cancels all running commands at the start of test mode.
     CommandScheduler.getInstance().cancelAll();
-    try {
-      writer = new FileOutputStream("home/lvuser/path.txt");
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+   
   
   }
 
@@ -156,14 +156,6 @@ public class Robot extends TimedRobot {
   
   @Override
   public void testPeriodic() {
-    try {
-      ByteBuffer buffer = ByteBuffer.allocate(8);
-      buffer.putDouble(RobotContainer.logitech.getRawAxis(1));
-      buffer.putDouble(RobotContainer.logitech.getRawAxis(3));
-      writer.write(buffer.array());
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+  //
   }
 }
