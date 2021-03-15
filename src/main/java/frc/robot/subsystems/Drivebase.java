@@ -1,4 +1,4 @@
-// Copyright (c) FIRST and other WPILib contributors.
+z// Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
@@ -64,9 +64,9 @@ public class Drivebase extends SubsystemBase {
       drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 1);
 
     } else if (RobotContainer.logitech.getRawAxis(2) > 0.5) {
-      drive(RobotContainer.logitech.getRawAxis(1) * 0.35, RobotContainer.logitech.getRawAxis(5) * 1);
+      drive(RobotContainer.logitech.getRawAxis(1) * 0.2, RobotContainer.logitech.getRawAxis(5) * 1);
     } else if (RobotContainer.logitech.getRawAxis(3) > 0.5) {
-      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 0.35);
+      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 0.2);
     } else {
       drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 1);
     }
