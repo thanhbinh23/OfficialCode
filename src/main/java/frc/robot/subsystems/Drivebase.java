@@ -60,15 +60,15 @@ public class Drivebase extends SubsystemBase {
   public void periodic() {
 
   
-    if (RobotContainer.logitech.getRawButton(8) && RobotContainer.logitech.getRawButton(7)) {
-      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(3) * 1);
+    if (RobotContainer.logitech.getRawAxis(2) > 0.5 && RobotContainer.logitech.getRawAxis(3) > 0.5) {
+      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 1);
 
-    } else if (RobotContainer.logitech.getRawButton(8)) {
-      drive(RobotContainer.logitech.getRawAxis(1) * 0.35, RobotContainer.logitech.getRawAxis(3) * 1);
-    } else if (RobotContainer.logitech.getRawButton(7)) {
-      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(3) * 0.35);
+    } else if (RobotContainer.logitech.getRawAxis(2) > 0.5) {
+      drive(RobotContainer.logitech.getRawAxis(1) * 0.35, RobotContainer.logitech.getRawAxis(5) * 1);
+    } else if (RobotContainer.logitech.getRawAxis(3) > 0.5) {
+      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 0.35);
     } else {
-      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(3) * 1);
+      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 1);
     }
   }
 

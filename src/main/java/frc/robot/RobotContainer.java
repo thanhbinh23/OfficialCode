@@ -87,15 +87,15 @@ public class RobotContainer {
     new JoystickButton(logitech, L1).whileActiveOnce(suck);
     new JoystickButton(logitech, R1).whileActiveOnce(spit);
     new JoystickButton(xbox, R1).whileActiveOnce(shoot);
-    new JoystickButton(logitech, GREENlog).whileActiveOnce(Open);
-    new JoystickButton(logitech, BLUElog).whileActiveOnce(spin);
+    new JoystickButton(logitech, GREEN) .whileActiveOnce(Open);
+    new JoystickButton(logitech, BLUE).whileActiveOnce(spin);
     new JoystickButton(xbox, YELLOW).whileActiveOnce(AngleUp);
     new JoystickButton(xbox, GREEN).whileActiveOnce(AngleUp);
     new JoystickButton(xbox, BLUE).whileActiveOnce(Unload);
     
-    new JoystickButton(logitech, YELLOWlog).whileActiveOnce(Close);
+    new JoystickButton(logitech, YELLOW).whileActiveOnce(Close);
     new JoystickButton(xbox, L1).whileActiveOnce(Load);
-    new JoystickButton(logitech, REDlog).whileActiveOnce(spinR);
+    new JoystickButton(logitech, RED).whileActiveOnce(spinR);
     new JoystickButton(xbox, 9).whenPressed(new Crash());
   }
 
