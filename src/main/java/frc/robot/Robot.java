@@ -17,6 +17,7 @@ import java.nio.ByteBuffer;
 
 import javax.swing.plaf.synth.SynthStyle;
 
+import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -37,6 +38,11 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
 
+
+  private Counter m_LIDAR;
+  FileOutputStream writer;
+
+
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
@@ -47,7 +53,17 @@ public class Robot extends TimedRobot {
     // and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+
+    //LIDAR
+    m_LIDAR = new Counter(Constants.LIDAR_PORT);
+    m_LIDAR.setMaxPeriod(1.00); // sau 1s thì dừng 
+    m_LIDAR.setSemiPeriodMode(true);
+    m_LIDAR.reset();
+    //đếm lại từ 0
   }
+
+  final double offset = 10;
+  //độ lệch (chưa chắc đúng, phải thử bằng thực nghiệm)
 
   /**
    * This function is called every robot packet, no matter the mode. Use this for
@@ -71,6 +87,16 @@ public class Robot extends TimedRobot {
     // robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
+
+    //lidar
+    double dist; //distance
+    if (m_LIDAR.get() < 1) //nếu đọc từ lidar là 0 thì dừng, tránh code lỗi 
+      dist = 0;
+    else
+      dist = (m_LIDAR.getPeriod()*1000000.0/10.0) - offset ;//tính khoảng cách nhớ trừ độ lệch offset
+      //hàm getPeriod() cho đơn vị là giây nên phải đổi về ms (micro second) r tính đc kc
+    SmartDashboard.putnumber("distance", dist); // gửi về dashboard khoảng cách đến vật cản gần nhất
+
   }
 
   /**
