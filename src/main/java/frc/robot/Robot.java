@@ -55,10 +55,11 @@ public class Robot extends TimedRobot {
     m_robotContainer = new RobotContainer();
 
     //LIDAR
-    m_LIDAR = new Counter(1);
+    m_LIDAR = new Counter(0);
     m_LIDAR.setMaxPeriod(1.00); // sau 1s thì dừng 
     m_LIDAR.setSemiPeriodMode(true);
     m_LIDAR.reset();
+    
     //đếm lại từ 0
   }
 
@@ -90,10 +91,11 @@ public class Robot extends TimedRobot {
 
     //lidar
     double dist; //distance
+    SmartDashboard.putNumber("lidar", m_LIDAR.get());
     if (m_LIDAR.get() < 1) //nếu đọc từ lidar là 0 thì dừng, tránh code lỗi 
       dist = 0;
     else
-      dist = (m_LIDAR.getPeriod());
+      dist = (m_LIDAR.getPeriod()
       *1000000.0/10.0) - offset ;//tính khoảng cách nhớ trừ độ lệch offset
       //hàm getPeriod() cho đơn vị là giây nên phải đổi về ms (micro second) r tính đc kc
     SmartDashboard.putNumber("distance", dist); // gửi về dashboard khoảng cách đến vật cản gần nhất
