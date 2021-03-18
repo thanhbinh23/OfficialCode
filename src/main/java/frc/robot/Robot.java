@@ -93,7 +93,7 @@ public class Robot extends TimedRobot {
     double dist; //distance
     SmartDashboard.putNumber("lidar", m_LIDAR.get());
     if (m_LIDAR.get() < 1) //nếu đọc từ lidar là 0 thì dừng, tránh code lỗi 
-      dist = 0;
+      dist = 1;
     else
       dist = (m_LIDAR.getPeriod()
       *1000000.0/10.0) - offset ;//tính khoảng cách nhớ trừ độ lệch offset
