@@ -93,10 +93,15 @@ public class Robot extends TimedRobot {
     if (m_LIDAR.get() < 1) //nếu đọc từ lidar là 0 thì dừng, tránh code lỗi 
       dist = 0;
     else
-      dist = (m_LIDAR.getPeriod()*1000000.0/10.0) - offset ;//tính khoảng cách nhớ trừ độ lệch offset
+      dist = (m_LIDAR.getPeriod()*1000000.0/10.0) - offset ;
+      //tính khoảng cách nhớ trừ độ lệch offset
+      
       //hàm getPeriod() cho đơn vị là giây nên phải đổi về ms (micro second) r tính đc kc
-    SmartDashboard.putnumber("distance", dist); // gửi về dashboard khoảng cách đến vật cản gần nhất
 
+    SmartDashboard.putnumber("distance", dist); 
+    // gửi về dashboard khoảng cách đến vật cản gần nhất
+      
+    //đơn vị đo: cm 
   }
 
   /**
@@ -182,6 +187,6 @@ public class Robot extends TimedRobot {
   
   @Override
   public void testPeriodic() {
-  //
+  
   }
 }
