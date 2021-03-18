@@ -94,6 +94,7 @@ public class Robot extends TimedRobot {
       //hàm getPeriod() cho đơn vị là giây nên phải đổi về ms (micro second) r tính đc kc
     SmartDashboard.putnumber("distance", dist); // gửi về dashboard khoảng cách đến vật cản gần nhất
 
+    // đơn vị đo là cm
   }
 
   /**
