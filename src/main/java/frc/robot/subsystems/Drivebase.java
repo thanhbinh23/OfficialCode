@@ -16,6 +16,8 @@ import static frc.robot.Constants.DRIVE_CONST.*;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Robot;
 import frc.robot.RobotContainer;
@@ -59,7 +61,7 @@ public class Drivebase extends SubsystemBase {
   @Override
   public void periodic() {
 
-  
+    SmartDashboard.putNumber("dist", leftFollow.getSensorCollection().getQuadraturePosition());
     if (RobotContainer.logitech.getRawAxis(2) > 0.5 && RobotContainer.logitech.getRawAxis(3) > 0.5) {
       drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 1);
 

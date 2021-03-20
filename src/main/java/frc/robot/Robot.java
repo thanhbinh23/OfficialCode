@@ -9,6 +9,7 @@ package frc.robot;
 
 import static frc.robot.Constants.STICK_CONST.*;
 
+import java.beans.Encoder;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -59,8 +60,7 @@ public class Robot extends TimedRobot {
     m_LIDAR.setMaxPeriod(1.00); // sau 1s thì dừng 
     m_LIDAR.setSemiPeriodMode(true);
     m_LIDAR.reset();
-    
-    //đếm lại từ 0
+   
   }
 
   final static double offset = 10;
@@ -77,7 +77,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-
+   
     SmartDashboard.putNumber("foo", SmartDashboard.getNumber("foo", 0) + 1);
     
 // Runs the Scheduler. This is responsible for polling buttons, adding
@@ -89,16 +89,16 @@ public class Robot extends TimedRobot {
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
 
-    //lidar
-    double dist; //distance
-    SmartDashboard.putNumber("lidar", m_LIDAR.get());
-    if (m_LIDAR.get() < 1) //nếu đọc từ lidar là 0 thì dừng, tránh code lỗi 
-      dist = 1;
-    else
-      dist = (m_LIDAR.getPeriod()
-      *1000000.0/10.0) - offset ;//tính khoảng cách nhớ trừ độ lệch offset
-      //hàm getPeriod() cho đơn vị là giây nên phải đổi về ms (micro second) r tính đc kc
-    SmartDashboard.putNumber("distance", dist); // gửi về dashboard khoảng cách đến vật cản gần nhất
+  
+   
+    // SmartDashboard.putNumber("lidar", m_LIDAR.get());
+    // if (m_LIDAR.get() < 1) //nếu đọc từ lidar là 0 thì dừng, tránh code lỗi 
+    //   dist = 1;
+    // else
+    //   dist = (m_LIDAR.getPeriod()
+    //   *1000000.0/10.0) - offset ;//tính khoảng cách nhớ trừ độ lệch offset
+    //   //hàm getPeriod() cho đơn vị là giây nên phải đổi về ms (micro second) r tính đc kc
+    // //SmartDashboard.putNumber("distance", dist); // gửi về dashboard khoảng cách đến vật cản gần nhất
 
   }
 
