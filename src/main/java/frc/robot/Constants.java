@@ -54,10 +54,6 @@ public final class Constants {
         public static final double kToleranceAngularVelocity = 0.08;
     }
     public static final class LIDAR_CONST {
-<<<<<<< HEAD
-        public static final int LIDAR_PORT = 0; 
-=======
         public static final int LIDAR_PORT = 0;
->>>>>>> main
     }
 }
