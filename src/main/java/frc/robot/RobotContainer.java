@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.AngleUp;
+import frc.robot.commands.AutoNav;
 import frc.robot.commands.Autonomous;
 import frc.robot.commands.Crash;
 import frc.robot.commands.Load;
@@ -45,7 +46,8 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   
   public final Drivebase drivebase = new Drivebase();
-  private final Autonomous m_autoCommand = new Autonomous(drivebase);
+
+  private final AutoNav m_autoCommand = new AutoNav(drivebase);
   public static Joystick xbox = new Joystick(1);
   public static Joystick logitech = new Joystick(0);
   public final Shooter shooter = new Shooter();

@@ -33,10 +33,10 @@ public class Drivebase extends SubsystemBase {
   public Drivebase() {
    
     leftFollow.follow(leftMaster);
-    // leftFollow.setNeutralMode(NeutralMode.Brake);
-    // leftMaster.setNeutralMode(NeutralMode.Brake);
-    // rightFollow.setNeutralMode(NeutralMode.Brake);
-    // rightMaster.setNeutralMode(NeutralMode.Brake);
+     leftFollow.setNeutralMode(NeutralMode.Brake);
+     leftMaster.setNeutralMode(NeutralMode.Brake);
+     rightFollow.setNeutralMode(NeutralMode.Brake);
+     rightMaster.setNeutralMode(NeutralMode.Brake);
 
     rightFollow.follow(rightMaster);
     leftMaster.setInverted(true);
@@ -61,7 +61,10 @@ public class Drivebase extends SubsystemBase {
   @Override
   public void periodic() {
 
-    SmartDashboard.putNumber("dist", leftFollow.getSensorCollection().getQuadraturePosition());
+    SmartDashboard.putNumber("distL", leftMaster.getSensorCollection().getQuadraturePosition());
+    SmartDashboard.putNumber("distR", rightMaster.getSensorCollection().getQuadraturePosition());
+
+
     if (RobotContainer.logitech.getRawAxis(2) > 0.5 && RobotContainer.logitech.getRawAxis(3) > 0.5) {
       drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 1);
 
