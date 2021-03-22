@@ -5,10 +5,19 @@
 package frc.robot.subsystems;
 
 import static frc.robot.Constants.STICK_CONST.*;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+
 import static frc.robot.Constants.DRIVE_CONST.*;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Robot;
 import frc.robot.RobotContainer;
@@ -19,36 +28,52 @@ public class Drivebase extends SubsystemBase {
   public WPI_TalonSRX rightMaster = new WPI_TalonSRX(RIGHT_MASTER_CAN);
   public WPI_TalonSRX leftFollow = new WPI_TalonSRX(LEFT_FOLLOW_CAN);
   public WPI_TalonSRX rightFollow = new WPI_TalonSRX(RIGHT_FOLLOW_CAN);
-
+  public boolean enabled = false;
+  public FileOutputStream writer;
   public Drivebase() {
+   
     leftFollow.follow(leftMaster);
-    leftFollow.setNeutralMode(NeutralMode.Brake);
-    leftMaster.setNeutralMode(NeutralMode.Brake);
-    rightFollow.setNeutralMode(NeutralMode.Brake);
-    rightMaster.setNeutralMode(NeutralMode.Brake);
+     leftFollow.setNeutralMode(NeutralMode.Brake);
+     leftMaster.setNeutralMode(NeutralMode.Brake);
+     rightFollow.setNeutralMode(NeutralMode.Brake);
+     rightMaster.setNeutralMode(NeutralMode.Brake);
 
     rightFollow.follow(rightMaster);
     leftMaster.setInverted(true);
     leftFollow.setInverted(true);
   }
 
-  public void drive(double x, double y) {
-    leftMaster.set(x);
-    rightMaster.set(y);
+  ByteBuffer buffer = ByteBuffer.allocate(16);
+  public void drive(double... v) {
+    if(writer != null){
+    try {
+     buffer.putDouble(0,v[0]);
+     buffer.putDouble(8,v[1]);
+     writer.write(buffer.array());
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }}
+    leftMaster.set(v[0]);
+    rightMaster.set(v[1]);
   }
 
   @Override
   public void periodic() {
-    if(RobotContainer.logitech.getRawButton(8) && RobotContainer.logitech.getRawButton(7)){
-      drive(RobotContainer.logitech.getRawAxis(1) * 0.9, RobotContainer.logitech.getRawAxis(3) * 0.9);
-  
-    }
-    else if (RobotContainer.logitech.getRawButton(8)) {
-      drive(RobotContainer.logitech.getRawAxis(1) * 0.25, RobotContainer.logitech.getRawAxis(3) * 0.9);
-    } else if (RobotContainer.logitech.getRawButton(7)) {
-      drive(RobotContainer.logitech.getRawAxis(1) * 0.9, RobotContainer.logitech.getRawAxis(3) * 0.25);
+
+    SmartDashboard.putNumber("distL", leftMaster.getSensorCollection().getQuadraturePosition());
+    SmartDashboard.putNumber("distR", rightMaster.getSensorCollection().getQuadraturePosition());
+
+
+    if (RobotContainer.logitech.getRawAxis(2) > 0.5 && RobotContainer.logitech.getRawAxis(3) > 0.5) {
+      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 1);
+
+    } else if (RobotContainer.logitech.getRawAxis(2) > 0.5) {
+      drive(RobotContainer.logitech.getRawAxis(1) * 0.2, RobotContainer.logitech.getRawAxis(5) * 1);
+    } else if (RobotContainer.logitech.getRawAxis(3) > 0.5) {
+      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 0.2);
     } else {
-      drive(RobotContainer.logitech.getRawAxis(1) * 0.7, RobotContainer.logitech.getRawAxis(3) * 0.7);
+      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 1);
     }
   }
 

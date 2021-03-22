@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.AngleUp;
+import frc.robot.commands.AutoNav;
 import frc.robot.commands.Autonomous;
 import frc.robot.commands.Crash;
 import frc.robot.commands.Load;
@@ -18,13 +19,13 @@ import frc.robot.commands.Open;
 import frc.robot.commands.Shoot;
 import frc.robot.commands.Spin;
 import frc.robot.commands.Suck;
-import frc.robot.commands.PistonExtend;
+// import frc.robot.commands.PistonExtend;
 
 import frc.robot.subsystems.Drivebase;
 import frc.robot.subsystems.Hood;
 import frc.robot.subsystems.Loader;
 import frc.robot.subsystems.Opener;
-import frc.robot.subsystems.Piston;
+// import frc.robot.subsystems.Piston;
 import frc.robot.subsystems.Sucker;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.WheelOfDoom;
@@ -45,13 +46,14 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   
   public final Drivebase drivebase = new Drivebase();
-  private final Autonomous m_autoCommand = new Autonomous(drivebase);
+
+  private final AutoNav m_autoCommand = new AutoNav(drivebase);
   public static Joystick xbox = new Joystick(1);
   public static Joystick logitech = new Joystick(0);
   public final Shooter shooter = new Shooter();
   public final Sucker sucker = new Sucker();
   public final WheelOfDoom WOD = new WheelOfDoom();
-  public final Piston piston = new Piston();
+  // public final Piston piston = new Piston();
   public final Loader loader = new Loader();
   public final Opener opener = new Opener();
   public final Hood hood = new Hood();
@@ -65,7 +67,7 @@ public class RobotContainer {
   Command Close = new Open(opener, -0.5);
   Command AngleUp = new AngleUp(hood, 1);
   Command AngleDown = new AngleUp(hood, -1);
-  Command PistonExtend = new PistonExtend(piston);
+  // Command PistonExtend = new PistonExtend(piston);
   Command Load = new Load(loader, 0.6);
   Command Unload = new Load(loader,-0.6);
   
@@ -87,15 +89,15 @@ public class RobotContainer {
     new JoystickButton(logitech, L1).whileActiveOnce(suck);
     new JoystickButton(logitech, R1).whileActiveOnce(spit);
     new JoystickButton(xbox, R1).whileActiveOnce(shoot);
-    new JoystickButton(logitech, GREENlog).whileActiveOnce(Open);
-    new JoystickButton(logitech, BLUElog).whileActiveOnce(spin);
+    new JoystickButton(logitech, GREEN) .whileActiveOnce(Open);
+    new JoystickButton(logitech, BLUE).whileActiveOnce(spin);
     new JoystickButton(xbox, YELLOW).whileActiveOnce(AngleUp);
     new JoystickButton(xbox, GREEN).whileActiveOnce(AngleUp);
     new JoystickButton(xbox, BLUE).whileActiveOnce(Unload);
     
-    new JoystickButton(logitech, YELLOWlog).whileActiveOnce(Close);
+    new JoystickButton(logitech, YELLOW).whileActiveOnce(Close);
     new JoystickButton(xbox, L1).whileActiveOnce(Load);
-    new JoystickButton(logitech, REDlog).whileActiveOnce(spinR);
+    new JoystickButton(logitech, RED).whileActiveOnce(spinR);
     new JoystickButton(xbox, 9).whenPressed(new Crash());
   }
 

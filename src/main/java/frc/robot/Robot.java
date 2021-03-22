@@ -9,6 +9,8 @@ package frc.robot;
 
 import static frc.robot.Constants.STICK_CONST.*;
 
+import java.beans.Encoder;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -37,9 +39,10 @@ import frc.robot.commands.Spin;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
+
   private Counter m_LIDAR;
   FileOutputStream writer;
-
+  
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
@@ -51,16 +54,9 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
 
-    //LIDAR
-    m_LIDAR = new Counter(Constants.LIDAR_PORT);
-    m_LIDAR.setMaxPeriod(1.00); // sau 1s thì dừng 
-    m_LIDAR.setSemiPeriodMode(true);
-    m_LIDAR.reset();
-    //đếm lại từ 0
-  }
+    // LIDAR
 
-  final double offset = 10;
-  //độ lệch (chưa chắc đúng, phải thử bằng thực nghiệm)
+  }
 
   /**
    * This function is called every robot packet, no matter the mode. Use this for
@@ -75,8 +71,8 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
 
     SmartDashboard.putNumber("foo", SmartDashboard.getNumber("foo", 0) + 1);
-    
-// Runs the Scheduler. This is responsible for polling buttons, adding
+
+    // Runs the Scheduler. This is responsible for polling buttons, adding
     // newly-scheduled
     // commands, running already-scheduled commands, removing finished or
     // interrupted commands,
@@ -85,16 +81,10 @@ public class Robot extends TimedRobot {
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
 
-    //lidar
-    double dist; //distance
-    if (m_LIDAR.get() < 1) //nếu đọc từ lidar là 0 thì dừng, tránh code lỗi 
-      dist = 0;
-    else
-      dist = (m_LIDAR.getPeriod()*1000000.0/10.0) - offset //tính khoảng cách nhớ trừ độ lệch offset
-      //hàm getPeriod() cho đơn vị là giây nên phải đổi về ms (micro second) r tính đc kc
-    SmartDashboard.putnumber("distance", dist); // gửi về dashboard khoảng cách đến vật cản gần nhất
+<<<<<<< HEAD
 
-    // đơn vị đo là cm
+=======
+>>>>>>> main
   }
 
   /**
@@ -102,20 +92,21 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
-    if(writer != null){
-    try {
-      writer.close();
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } //
-  }
+   
+    if (m_robotContainer.drivebase.writer != null) {
+      try {
+        m_robotContainer.drivebase.writer.close();
+      } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      } //
+    }
   }
 
   @Override
   public void disabledPeriodic() {
     //
-    
+
   }
 
   /**
@@ -137,7 +128,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-
     //
   }
 
@@ -150,6 +140,11 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    try {
+      m_robotContainer.drivebase.writer = new FileOutputStream("home/lvuser/path.txt");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   /**
@@ -157,36 +152,23 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-        
-    //  m_wod.spin();
+
+    // m_wod.spin();
   }
 
   @Override
   public void testInit() {
     // Cancels all running commands at the start of test mode.
     CommandScheduler.getInstance().cancelAll();
-    try {
-      writer = new FileOutputStream("home/lvuser/path.txt");
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  
+
   }
 
   /**
    * This function is called periodically during test mode.
    */
-  
+
   @Override
   public void testPeriodic() {
-    try {
-      ByteBuffer buffer = ByteBuffer.allocate(8);
-      buffer.putDouble(RobotContainer.logitech.getRawAxis(1));
-      buffer.putDouble(RobotContainer.logitech.getRawAxis(3));
-      writer.write(buffer.array());
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+    //
   }
 }
