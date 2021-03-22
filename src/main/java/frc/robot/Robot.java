@@ -10,6 +10,7 @@ package frc.robot;
 import static frc.robot.Constants.STICK_CONST.*;
 
 import java.beans.Encoder;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -39,11 +40,9 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
 
-
   private Counter m_LIDAR;
   FileOutputStream writer;
-
-
+  
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
@@ -55,16 +54,9 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
 
-    //LIDAR
-    m_LIDAR = new Counter(0);
-    m_LIDAR.setMaxPeriod(1.00); // sau 1s thì dừng 
-    m_LIDAR.setSemiPeriodMode(true);
-    m_LIDAR.reset();
-   
-  }
+    // LIDAR
 
-  final static double offset = 10;
-  //độ lệch (chưa chắc đúng, phải thử bằng thực nghiệm)
+  }
 
   /**
    * This function is called every robot packet, no matter the mode. Use this for
@@ -77,10 +69,10 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-   
+
     SmartDashboard.putNumber("foo", SmartDashboard.getNumber("foo", 0) + 1);
-    
-// Runs the Scheduler. This is responsible for polling buttons, adding
+
+    // Runs the Scheduler. This is responsible for polling buttons, adding
     // newly-scheduled
     // commands, running already-scheduled commands, removing finished or
     // interrupted commands,
@@ -89,17 +81,6 @@ public class Robot extends TimedRobot {
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
 
-  
-   
-    // SmartDashboard.putNumber("lidar", m_LIDAR.get());
-    // if (m_LIDAR.get() < 1) //nếu đọc từ lidar là 0 thì dừng, tránh code lỗi 
-    //   dist = 1;
-    // else
-    //   dist = (m_LIDAR.getPeriod()
-    //   *1000000.0/10.0) - offset ;//tính khoảng cách nhớ trừ độ lệch offset
-    //   //hàm getPeriod() cho đơn vị là giây nên phải đổi về ms (micro second) r tính đc kc
-    // //SmartDashboard.putNumber("distance", dist); // gửi về dashboard khoảng cách đến vật cản gần nhất
-
   }
 
   /**
@@ -107,20 +88,21 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
-    if(m_robotContainer.drivebase.writer != null){
-    try {
-      m_robotContainer.drivebase.writer.close();
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } //
-  }
+   
+    if (m_robotContainer.drivebase.writer != null) {
+      try {
+        m_robotContainer.drivebase.writer.close();
+      } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      } //
+    }
   }
 
   @Override
   public void disabledPeriodic() {
     //
-    
+
   }
 
   /**
@@ -142,7 +124,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-
     //
   }
 
@@ -167,24 +148,23 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    
-    //  m_wod.spin();
+
+    // m_wod.spin();
   }
 
   @Override
   public void testInit() {
     // Cancels all running commands at the start of test mode.
     CommandScheduler.getInstance().cancelAll();
-   
-  
+
   }
 
   /**
    * This function is called periodically during test mode.
    */
-  
+
   @Override
   public void testPeriodic() {
-  //
+    //
   }
 }
