@@ -21,6 +21,7 @@ import javax.swing.plaf.synth.SynthStyle;
 
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.TimedRobot;
+
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -89,15 +90,16 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledInit() {
    
-    if (m_robotContainer.drivebase.writer != null) {
-      try {
-        m_robotContainer.drivebase.writer.close();
-      } catch (IOException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      } //
+    // if (m_robotContainer.drivebase.writer != null) {
+      
+    //   try {
+    //   m_robotContainer.drivebase.writer.close();
+    //   } catch (IOException e) {
+    //     // TODO Auto-generated catch block
+    //     e.printStackTrace();
+    //   } //
     }
-  }
+  
 
   @Override
   public void disabledPeriodic() {
@@ -136,11 +138,11 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-    try {
-      m_robotContainer.drivebase.writer = new FileOutputStream("home/lvuser/path.txt");
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+  //   try {
+  //     m_robotContainer.drivebase.writer = new FileOutputStream("home/lvuser/path.txt");
+  //   } catch (IOException e) {
+  //     e.printStackTrace();
+  //   }
   }
 
   /**
@@ -148,6 +150,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+// SmartDashboard.putNumber("time", Timer.getFPGATimestamp());
 
     // m_wod.spin();
   }

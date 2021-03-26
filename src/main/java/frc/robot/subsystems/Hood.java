@@ -22,11 +22,11 @@ public class Hood extends SubsystemBase {
   }
 
   public void AngleUp() {
-    Hood.set(0.3);
+    Hood.set(0.8);
   }
 
   public void AngleDown() {
-    Hood.set(-0.3);
+    Hood.set(-0.8);
   }
 
   public void stop() {

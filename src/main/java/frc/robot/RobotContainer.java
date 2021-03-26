@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.AngleUp;
 import frc.robot.commands.AutoNav;
-import frc.robot.commands.Autonomous;
+import frc.robot.commands.AutoNav1;
 import frc.robot.commands.Crash;
 import frc.robot.commands.Load;
 import frc.robot.commands.Open;
@@ -47,7 +47,7 @@ public class RobotContainer {
   
   public final Drivebase drivebase = new Drivebase();
 
-  private final AutoNav m_autoCommand = new AutoNav(drivebase);
+  private final AutoNav1 m_autoCommand = new AutoNav1(drivebase);
   public static Joystick xbox = new Joystick(1);
   public static Joystick logitech = new Joystick(0);
   public final Shooter shooter = new Shooter();
