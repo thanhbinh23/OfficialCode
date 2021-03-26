@@ -92,7 +92,7 @@ public class RobotContainer {
     new JoystickButton(logitech, GREEN) .whileActiveOnce(Open);
     new JoystickButton(logitech, BLUE).whileActiveOnce(spin);
     new JoystickButton(xbox, YELLOW).whileActiveOnce(AngleUp);
-    new JoystickButton(xbox, GREEN).whileActiveOnce(AngleUp);
+    new JoystickButton(xbox, RED).whileActiveOnce(AngleDown);
     new JoystickButton(xbox, BLUE).whileActiveOnce(Unload);
     
     new JoystickButton(logitech, YELLOW).whileActiveOnce(Close);

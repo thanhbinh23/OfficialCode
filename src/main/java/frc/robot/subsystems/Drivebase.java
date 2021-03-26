@@ -75,18 +75,18 @@ public class Drivebase extends SubsystemBase {
     SmartDashboard.putNumber("distR", rightMaster.getSensorCollection().getQuadraturePosition());
 
     if (RobotContainer.logitech.getRawAxis(2) > 0.5 && RobotContainer.logitech.getRawAxis(3) > 0.5) {
-      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 1);
+      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 0.9);
 
     } else if (RobotContainer.logitech.getRawAxis(2) > 0.5) {
       SmartDashboard.putBoolean("turning left", true);
-      drive(RobotContainer.logitech.getRawAxis(1) * 0.2, RobotContainer.logitech.getRawAxis(5) * 1);
+      drive(RobotContainer.logitech.getRawAxis(1) * 0, RobotContainer.logitech.getRawAxis(5) * 1);
     } else if (RobotContainer.logitech.getRawAxis(3) > 0.5) {
       SmartDashboard.putBoolean("turning right", true);
-      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 0.08);
+      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 0);
     } else {
       SmartDashboard.putBoolean("turning left", false);
       SmartDashboard.putBoolean("turning right", false);
-      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 1);
+      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 0.9);
     }
     if (Math.abs(RobotContainer.logitech.getRawAxis(1)) > 0.5
         && Math.abs(RobotContainer.logitech.getRawAxis(5)) > 0.5) {
