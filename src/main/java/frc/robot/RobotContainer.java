@@ -23,6 +23,7 @@ import frc.robot.commands.Suck;
 
 import frc.robot.subsystems.Drivebase;
 import frc.robot.subsystems.Hood;
+import frc.robot.subsystems.LIDARSubsystem;
 import frc.robot.subsystems.Loader;
 import frc.robot.subsystems.Opener;
 // import frc.robot.subsystems.Piston;
@@ -57,6 +58,7 @@ public class RobotContainer {
   public final Loader loader = new Loader();
   public final Opener opener = new Opener();
   public final Hood hood = new Hood();
+  public static final LIDARSubsystem lidarSubsystem = new LIDARSubsystem();
 
   
   Command shoot = new Shoot(shooter);

@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Loader extends SubsystemBase {
   public WPI_TalonSRX loader = new WPI_TalonSRX(LOADER_CAN);
   public Loader() {
-    //
+    
   }
 
   public void load(double speed) {
