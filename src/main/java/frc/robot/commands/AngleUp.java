@@ -30,7 +30,7 @@ public class AngleUp extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // b = m_hood.getAngle();
+    b = m_hood.getAngle();
     SmartDashboard.putNumber("Angle", b);
     if (x > 0) {
       while (b - a < x * 4096) {

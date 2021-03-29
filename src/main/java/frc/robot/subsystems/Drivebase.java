@@ -71,22 +71,26 @@ public class Drivebase extends SubsystemBase {
   @Override
   public void periodic() {
 
-    SmartDashboard.putNumber("distL", leftFollow.getSensorCollection().getQuadraturePosition());
-    SmartDashboard.putNumber("distR", rightMaster.getSensorCollection().getQuadraturePosition());
+    // SmartDashboard.putNumber("distL",
+    // leftFollow.getSensorCollection().getQuadraturePosition());
+    // SmartDashboard.putNumber("distR",
+    // rightMaster.getSensorCollection().getQuadraturePosition());
 
     if (RobotContainer.logitech.getRawAxis(2) > 0.5 && RobotContainer.logitech.getRawAxis(3) > 0.5) {
-      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 0.9);
+      drive(RobotContainer.logitech.getRawAxis(1) * 0.8, RobotContainer.logitech.getRawAxis(5) * 0.8);
 
     } else if (RobotContainer.logitech.getRawAxis(2) > 0.5) {
       SmartDashboard.putBoolean("turning left", true);
       drive(RobotContainer.logitech.getRawAxis(1) * 0, RobotContainer.logitech.getRawAxis(5) * 1);
     } else if (RobotContainer.logitech.getRawAxis(3) > 0.5) {
       SmartDashboard.putBoolean("turning right", true);
-      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 0);
+      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 0
+
+      );
     } else {
       SmartDashboard.putBoolean("turning left", false);
       SmartDashboard.putBoolean("turning right", false);
-      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 0.9);
+      drive(RobotContainer.logitech.getRawAxis(1) * 1, RobotContainer.logitech.getRawAxis(5) * 1);
     }
     if (Math.abs(RobotContainer.logitech.getRawAxis(1)) > 0.5
         && Math.abs(RobotContainer.logitech.getRawAxis(5)) > 0.5) {
@@ -94,7 +98,7 @@ public class Drivebase extends SubsystemBase {
       x = Timer.getFPGATimestamp();
       SmartDashboard.putNumber("run time", x - y);
       z = x - y;
-      if (z > 7) {
+      if (z > 6) {
         SmartDashboard.putNumber("stop time", z);
       }
     } else {
