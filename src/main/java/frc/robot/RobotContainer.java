@@ -37,14 +37,15 @@ import static frc.robot.Constants.STICK_CONST.*;
 import java.time.Year;
 
 /**
- * This class is where the bulk of the robot should be declared.  Since Command-based is a
- * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
- * periodic methods (other than the scheduler calls).  Instead, the structure of the robot
- * (including subsystems, commands, and button mappings) should be declared here.
+ * This class is where the bulk of the robot should be declared. Since
+ * Command-based is a "declarative" paradigm, very little robot logic should
+ * actually be handled in the {@link Robot} periodic methods (other than the
+ * scheduler calls). Instead, the structure of the robot (including subsystems,
+ * commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  
+
   public final Drivebase drivebase = new Drivebase();
 
   private final AutoNav1 m_autoCommand = new AutoNav1(drivebase);
@@ -58,27 +59,22 @@ public class RobotContainer {
   public final Opener opener = new Opener();
   public final Hood hood = new Hood();
 
-  
   Command shoot = new Shoot(shooter);
   Command suck = new Suck(sucker, 0.6);
   Command spit = new Suck(sucker, -0.6);
   Command spin = new Spin(WOD, 0.4);
   Command Open = new Open(opener, 0.5);
   Command Close = new Open(opener, -0.5);
-  Command AngleUp = new AngleUp(hood, 1);
-  Command AngleDown = new AngleUp(hood, -1);
+  Command AngleUp = new AngleUp(hood, 0.2);
+  Command AngleDown = new AngleUp(hood, -0.2);
   // Command PistonExtend = new PistonExtend(piston);
   Command Load = new Load(loader, 0.6);
-  Command Unload = new Load(loader,-0.6);
-  
+  Command Unload = new Load(loader, -0.6);
+
   Command spinR = new Spin(WOD, -0.4);
 
-  
-
-
-
   /**
-   * The container for the robot.  Contains subsystems, OI devices, and commands.
+   * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     // Configure the button bindings
@@ -89,18 +85,17 @@ public class RobotContainer {
     new JoystickButton(logitech, L1).whileActiveOnce(suck);
     new JoystickButton(logitech, R1).whileActiveOnce(spit);
     new JoystickButton(xbox, R1).whileActiveOnce(shoot);
-    new JoystickButton(logitech, GREEN) .whileActiveOnce(Open);
+    new JoystickButton(logitech, GREEN).whileActiveOnce(Open);
     new JoystickButton(logitech, BLUE).whileActiveOnce(spin);
     new JoystickButton(xbox, YELLOW).whileActiveOnce(AngleUp);
     new JoystickButton(xbox, RED).whileActiveOnce(AngleDown);
     new JoystickButton(xbox, BLUE).whileActiveOnce(Unload);
-    
+
     new JoystickButton(logitech, YELLOW).whileActiveOnce(Close);
     new JoystickButton(xbox, L1).whileActiveOnce(Load);
     new JoystickButton(logitech, RED).whileActiveOnce(spinR);
     new JoystickButton(xbox, 9).whenPressed(new Crash());
   }
-
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

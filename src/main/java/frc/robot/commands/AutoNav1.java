@@ -14,7 +14,7 @@ public class AutoNav1 extends SequentialCommandGroup {
 
   /** Creates a new Autonomous. */
   public AutoNav1(Drivebase drive) {
-    super(new Run(drive, -1, -0.9).withTimeout(0.9)
+    super(new RotateToAngle(drivebase, 90).withTimeOut(2)
     // new Run(drive, 1, 0.2).withTimeout(0.3),
     // new Run(drive, 1, 1).withTimeout(0.2),
     // new Run(drive, 1, 0.2).withTimeout(0.3),
