@@ -12,8 +12,9 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.AngleUp;
 import frc.robot.commands.AutoNav;
-import frc.robot.commands.AutoNav1;
+
 import frc.robot.commands.Crash;
+import frc.robot.commands.GalasticSearchRed2;
 import frc.robot.commands.Load;
 import frc.robot.commands.Open;
 import frc.robot.commands.Shoot;
@@ -47,8 +48,8 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
 
   public final Drivebase drivebase = new Drivebase();
-
-  private final AutoNav1 m_autoCommand = new AutoNav1(drivebase);
+  public final Opener opener = new Opener();
+  private final GalasticSearchRed2 m_autoCommand = new GalasticSearchRed2(drivebase,opener );
   public static Joystick xbox = new Joystick(1);
   public static Joystick logitech = new Joystick(0);
   public final Shooter shooter = new Shooter();
@@ -56,10 +57,10 @@ public class RobotContainer {
   public final WheelOfDoom WOD = new WheelOfDoom();
   // public final Piston piston = new Piston();
   public final Loader loader = new Loader();
-  public final Opener opener = new Opener();
   public final Hood hood = new Hood();
 
   Command shoot = new Shoot(shooter);
+  
   Command suck = new Suck(sucker, 0.6);
   Command spit = new Suck(sucker, -0.6);
   Command spin = new Spin(WOD, 0.4);

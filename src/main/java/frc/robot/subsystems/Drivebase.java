@@ -71,10 +71,10 @@ public class Drivebase extends SubsystemBase {
   @Override
   public void periodic() {
 
-    // SmartDashboard.putNumber("distL",
-    // leftFollow.getSensorCollection().getQuadraturePosition());
-    // SmartDashboard.putNumber("distR",
-    // rightMaster.getSensorCollection().getQuadraturePosition());
+     SmartDashboard.putNumber("distL",
+     leftFollow.getSensorCollection().getQuadraturePosition());
+     SmartDashboard.putNumber("distR",
+     rightMaster.getSensorCollection().getQuadraturePosition());
 
     if (RobotContainer.logitech.getRawAxis(2) > 0.5 && RobotContainer.logitech.getRawAxis(3) > 0.5) {
       drive(RobotContainer.logitech.getRawAxis(1) * 0.8, RobotContainer.logitech.getRawAxis(5) * 0.8);
