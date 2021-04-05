@@ -18,21 +18,24 @@ public class NetworkTable extends SubsystemBase {
   NetworkTableEntry yEntry;
   public NetworkTable() {
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
-    edu.wpi.first.networktables.NetworkTable table = inst.getTable("datatable");
+    edu.wpi.first.networktables.NetworkTable table = inst.getTable("visiongart");
 
     xEntry = table.getEntry("X");
     yEntry = table.getEntry("Y");
+    double X = xEntry.getDouble(10);
+    double Y = yEntry.getDouble(100000);
+    
+    xEntry.setDouble(x);
+    yEntry.setDouble(y);
     }
-                                                                                                
-    double x = 0;
-    double y = 0;
+           double x = 99999;
+           double y = 10000;                                                                                     
+           
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-       xEntry.setDouble(x);
-       yEntry.setDouble(y);
-       
-       x += 0.05;
-       y += 1.0;
+    
+    
+    
   }
 }
